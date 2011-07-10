@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @event.name %>
+</p>
+
+<p>
+  <b>Start:</b>
+  <%= @event.start %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @event.end %>
+</p>
+
+<p>
+  <b>Venue:</b>
+  <%= @event.venue %>
+</p>
+
+<p>
+  <b>Logo:</b>
+  <%= @event.logo %>
+</p>
+
+<h3>Attendees</h3>
+
+<table>
+	<% @event.attendees.each do |attendee| %>
+		<tr>
+			<td><%= attendee.first_name %></td>
+			<td><%= attendee.last_name %></td>
+			<td><%= link_to "Edit", attendee_path(@attendee) %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

@@ -1,0 +1,86 @@
+<div class="in forms">
+	<%= form_for(@attendee) do |f| %>
+	  <% if @attendee.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@attendee.errors.count, "error") %> prohibited this attendee from being saved:</h2>
+
+	      <ul>
+	      <% @attendee.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	
+	  <div class="side_by_side">
+		  <p>
+		    <%= f.label :first_name %><br />
+		    <%= f.text_field :first_name, :class => "box" %>
+		  </p>
+
+		  <p>
+		    <%= f.label :last_name %><br />
+		    <%= f.text_field :last_name, :class => "box" %>
+		  </p>
+	  </div>
+
+	  <div class="side_by_side">
+		  <p>
+		    <%= f.label :phone_number %><br />
+		    <%= f.text_field :phone_number, :class => "box" %>
+		  </p>
+		
+		  <p>
+		    <%= f.label :twitter %><br />
+		    <%= f.text_field :twitter, :class => "box" %>
+		  </p>
+	  </div>
+
+	  <p>
+	    <%= f.label :email %><br />
+	    <%= f.text_field :email, :class => "box" %>
+	  </p>
+	
+	  <div class="side_by_side">	
+		  <p>
+		    <%= f.label :t_shirt %><br />
+		    <%= select("attendee", :t_shirt, options_from_collection_for_select(@attendee.tshirt_types.sort, :first, :last, @attendee['t_shirt'])) %>
+		  </p>
+
+		  <p>
+		    <%= f.label :diet %><br />
+		    <%= select("attendee", :diet, options_from_collection_for_select(@attendee.diet_types.sort, :first, :last, @attendee['diet'])) %>
+		  </p>
+	  </div>
+
+	  <div class="side_by_side">
+		  <p>
+			<%= f.label :event_id %><br />
+			<%= select("attendee", :event_id, options_from_collection_for_select(Event.all, :id, :name, @attendee['event_id'])) %>
+		  </p>
+
+		  <p>
+		    <%= f.label :ticket_id %><br />
+		    <%= f.text_field :ticket_id, :class => "box" %>
+		  </p>
+	  </div>
+
+	  <div class="side_by_side">
+		  <p>
+		    <%= f.label :badge %><br />
+		    <%= select("attendee", :badge, options_from_collection_for_select(@attendee.badge_types.sort, :first, :last, @attendee['badge'])) %>
+		  </p>
+		
+		  <p>
+		    <%= f.label :status %><br />
+		    <%= select("attendee", :status, options_from_collection_for_select(@attendee.status_types.sort, :first, :last, @attendee['status'])) %>
+		  </p>
+	  </div>
+
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+
+	<% end %>
+
+</div>

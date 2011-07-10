@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  event_id: 1
+  ticket_id: MyString
+  status: MyString
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  phone_number: MyString
+  twitter: MyString
+  t_shirt: MyString
+  diet: MyString
+  badge: MyString
+
+two:
+  event_id: 1
+  ticket_id: MyString
+  status: MyString
+  first_name: MyString
+  last_name: MyString
+  email: MyString
+  phone_number: MyString
+  twitter: MyString
+  t_shirt: MyString
+  diet: MyString
+  badge: MyString
