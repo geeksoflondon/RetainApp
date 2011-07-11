@@ -20,7 +20,7 @@ class AttendeesController < ApplicationController
     @attendee = Attendee.new(params[:attendee])
     
     if @attendee.save
-      redirect_to @attendee, :notice => 'Attendee was successfully created.'
+      redirect_to @attendee.event, :notice => 'Attendee was successfully created.'
     else
       render :action => "new"
     end
@@ -31,7 +31,7 @@ class AttendeesController < ApplicationController
     @attendee = Attendee.find(params[:id])
 
     if @attendee.update_attributes(params[:attendee])
-      redirect_to @attendee, :notice => 'Attendee was successfully updated.'
+      redirect_to @attendee.event, :notice => 'Attendee was successfully updated.'
     else
       render :action => "edit"
     end

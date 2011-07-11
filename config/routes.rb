@@ -1,5 +1,5 @@
 RetainApp::Application.routes.draw do
-  resources :attendees
+  resources :attendees, :only => [:show, :new, :edit, :create, :update, :destroy]
   resources :events
 
   # The priority is based upon order of creation:
