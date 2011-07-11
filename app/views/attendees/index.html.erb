@@ -13,7 +13,7 @@
 		</tr>
 		<% @attendees.each do |attendee| %>
 		<tr class="gray"> 
-			<td><%= "#{attendee.first_name} #{attendee.last_name}" %></td> 
+			<td><%= link_to "#{attendee.first_name} #{attendee.last_name}", attendee_path(attendee) %></td> 
 			<td><a href="#"><%= link_to attendee.event.name, event_path(attendee.event) %></a></td> 
 			<td><%= attendee.badge_types[attendee.badge] %></td> 
 			<td><%= attendee.status_types[attendee.status] %></td> 

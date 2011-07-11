@@ -14,7 +14,7 @@
 		</tr>
 		<% @events.each do |event| %>
 		<tr class="gray"> 
-			<td><%= event.name %></td> 
+			<td><%= link_to event.name, event_path(event) %></td> 
 			<td><%= "#{event.start.strftime("%e %b %g")} - #{event.end.strftime("%e %b %g")}" %></td> 
     		<td><%= event.venue %></td>
 			<td><%= event.attendees.count %></td> 
