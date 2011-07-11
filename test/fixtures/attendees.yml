@@ -3,25 +3,25 @@
 one:
   event_id: 1
   ticket_id: MyString
-  status: MyString
+  status: confirmed
   first_name: MyString
   last_name: MyString
   email: MyString
   phone_number: MyString
   twitter: MyString
-  t_shirt: MyString
-  diet: MyString
-  badge: MyString
+  t_shirt: m1
+  diet: vegan
+  badge: attendee
 
 two:
   event_id: 1
   ticket_id: MyString
-  status: MyString
+  status: cancelled
   first_name: MyString
   last_name: MyString
   email: MyString
   phone_number: MyString
   twitter: MyString
-  t_shirt: MyString
+  t_shirt: f1
   diet: MyString
-  badge: MyString
+  badge: crew

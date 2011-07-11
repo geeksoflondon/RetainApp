@@ -5,12 +5,6 @@ class AttendeesControllerTest < ActionController::TestCase
     @attendee = attendees(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:attendees)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
@@ -25,7 +19,7 @@ class AttendeesControllerTest < ActionController::TestCase
   end
 
   test "should show attendee" do
-    get :show, :id => @attendee.to_param
+    get :edit, :id => @attendee.to_param
     assert_response :success
   end
 
