@@ -1,41 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
-
-<p>
-  <b>Start:</b>
-  <%= @event.start %>
-</p>
-
-<p>
-  <b>End:</b>
-  <%= @event.end %>
-</p>
-
-<p>
-  <b>Venue:</b>
-  <%= @event.venue %>
-</p>
-
-<p>
-  <b>Logo:</b>
-  <%= @event.logo %>
-</p>
-
-<h3>Attendees</h3>
-
-<table>
-	<% @event.attendees.each do |attendee| %>
-		<tr>
-			<td><%= attendee.first_name %></td>
-			<td><%= attendee.last_name %></td>
-			<td><%= link_to "Edit", attendee_path(@attendee) %></td>
+<div class="in author"> 
+	<h2><%= @event.name %></h2><%= link_to 'Edit', edit_event_path(@event) %><br />
+	<p><%= @event.venue %> | <%= @event.start.strftime("%e %b %g") %> - <%= @event.end.strftime("%e %b %g") %></p> 
+</div>
+<hr>
+<div class="in">
+	<table width="850" border="0" cellspacing="0" cellpadding="10" class="table_main" > 
+		<tr style="background-color:#d9d8d8; font-size:14px;"> 
+			<td width="300"><strong>Name</strong></td> 
+			<td width="200"><strong>Badge</strong></td> 			
+			<td width="200"><strong>Status</strong></td> 
+			<td width="150"></td> 
 		</tr>
-	<% end %>
-</table>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+		<% @event.attendees.each do |attendee| %>
+		<tr class="gray"> 
+			<td><%= "#{attendee.first_name} #{attendee.last_name}" %></td> 
+			<td><%= attendee.badge_types[attendee.badge] %></td> 
+			<td><%= attendee.status_types[attendee.status] %></td> 
+			<td><%= link_to 'VIEW', attendee_path(attendee) %><span class="v_line">| </span> <%= link_to 'EDIT', edit_attendee_path(attendee) %></td> 
+		</tr> 
+		<% end %>
+	</table>
+</div>

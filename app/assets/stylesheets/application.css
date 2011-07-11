@@ -6,7 +6,7 @@ body{text-align:center; margin:0; padding:0; font-family:Lucida Grande, Arial; f
 	
 .content{background-color:#FFFFFF; border:1px solid #bab9b9; text-align:center; padding:10px;}
 
-.in{width:850px; margin:25px auto; text-align:left;}
+.in{width:850px; margin:15px auto; text-align:left;}
 
 .line{border-top:1px solid #bab9b9; height:1px; clear:both; display:block; }
 
@@ -40,17 +40,17 @@ a:hover{color:#f7941d;}
 
 /*.............................................................Form.................... */
 
-form h2 {margin-top: 10px; }
+.forms h2 {margin-top: 10px;}
 
-label {font-weight:bold;}
+.forms label {font-weight:bold;}
 
-select {width:400px; height: 39px; border:1px solid #bab9b9;}
+.forms select {width:400px; height: 39px; border:1px solid #bab9b9;}
 
 .box{border:1px solid #bab9b9; padding:10px; width:805px; color:#707070; font-size:14px; }
 
 .box2{border:1px solid #bab9b9; padding:10px; width:400px; color:#707070; font-size:14px; }
 
-input[type=submit], .com_btn{margin:0px; padding:10px 20px; border:0px; background-color:#f7941d; color:#fff; font-size:14px; }
+.forms input[type=submit], .com_btn{margin:0px; padding:10px 20px; border:0px; background-color:#f7941d; color:#fff; font-size:14px; }
 
 .side_by_side {	display: block; clear: both;}
 
@@ -110,7 +110,7 @@ td { padding: 12px; text-align:left; }
 
 .gray td {background-color:#f7f7f7;}
 
-.table_main { border-top: 1px solid #bab9b9; border-right: 1px solid #bab9b9; border-left: 1px solid #bab9b9;}
+.table_main { border-top: 1px solid #bab9b9; border-right: 1px solid #bab9b9; border-left: 1px solid #bab9b9; margin-top:20px;}
 
 .table_main .delete {background:url(images/x2.gif) center left no-repeat; padding-left:12px;}
 
