@@ -15,10 +15,10 @@
 		</tr>
 		<% @event.attendees.each do |attendee| %>
 		<tr class="gray"> 
-			<td><%= "#{attendee.first_name} #{attendee.last_name}" %></td> 
+			<td><%= link_to "#{attendee.first_name} #{attendee.last_name}", edit_attendee_path(attendee) %></td> 
 			<td><%= attendee.badge_types[attendee.badge] %></td> 
 			<td><%= attendee.status_types[attendee.status] %></td> 
-			<td><%= link_to 'VIEW', attendee_path(attendee) %><span class="v_line">| </span> <%= link_to 'EDIT', edit_attendee_path(attendee) %></td> 
+			<td><%= link_to 'EDIT', edit_attendee_path(attendee) %></td> 
 		</tr> 
 		<% end %>
 	</table>
