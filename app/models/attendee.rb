@@ -56,8 +56,6 @@ class Attendee < ActiveRecord::Base
   validates_inclusion_of :diet, :in => VALID_DIETS,
       :message => "%{value} is not a valid diet"
 
-  #Callbacks
-  before_create :generate_ticket_id
   
   def status_types
     @status_types = VALID_STATUS
