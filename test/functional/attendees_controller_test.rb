@@ -3,6 +3,8 @@ require 'test_helper'
 class AttendeesControllerTest < ActionController::TestCase
   setup do
     @attendee = attendees(:one)
+    @event = events(:one)
+    @attendee.event_id = @event.id
   end
 
   test "should get new" do
@@ -14,13 +16,7 @@ class AttendeesControllerTest < ActionController::TestCase
     assert_difference('Attendee.count') do
       post :create, :attendee => @attendee.attributes
     end
-
-    assert_redirected_to attendee_path(assigns(:attendee))
-  end
-
-  test "should show attendee" do
-    get :edit, :id => @attendee.to_param
-    assert_response :success
+    assert_redirected_to event_path(@attendee)
   end
 
   test "should get edit" do
@@ -30,7 +26,7 @@ class AttendeesControllerTest < ActionController::TestCase
 
   test "should update attendee" do
     put :update, :id => @attendee.to_param, :attendee => @attendee.attributes
-    assert_redirected_to attendee_path(assigns(:attendee))
+    assert_redirected_to event_path(@attendee)
   end
 
   test "should destroy attendee" do
