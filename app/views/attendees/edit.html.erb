@@ -1,6 +1,6 @@
-<h1>Editing attendee</h1>
+<div class="in"> 
+	<h2>Editing <%= "#{@attendee.first_name} #{@attendee.last_name}" %></h2> 
+	<%= link_to 'Back', event_path(@attendee.event) %>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @attendee %> |
-<%= link_to 'Back', attendees_path %>
