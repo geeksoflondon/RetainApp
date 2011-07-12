@@ -58,6 +58,8 @@ a:hover{color:#f7941d;}
 
 .side_by_side .box { width: 380px; }
 
+.date select {width: 100px;}
+
 /*.............................................................Check YES or NO.................... */
 
 .check{ margin:25px; text-align:left; padding:10px 15px; border:1px solid #bab9b9; background-color:#f7f7f7;}
