@@ -1,3 +1,4 @@
+<div class="in forms">
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -11,27 +12,30 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <p>
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => "box" %>
+  </p>
+  <div class="side_by_side">
+	  <p class="date">
+	    <%= f.label :start %><br />
+	    <%= f.date_select :start, :order => [:day, :month, :year] %>
+	  </p>
+	  <p class="date">
+	    <%= f.label :end %><br />
+	    <%= f.date_select :end, :order => [:day, :month, :year] %>
+	  </p>
   </div>
-  <div class="field">
-    <%= f.label :start %><br />
-    <%= f.date_select :start %>
-  </div>
-  <div class="field">
-    <%= f.label :end %><br />
-    <%= f.date_select :end %>
-  </div>
-  <div class="field">
+  <p>
     <%= f.label :venue %><br />
-    <%= f.text_field :venue %>
-  </div>
-  <div class="field">
+    <%= f.text_field :venue, :class => "box" %>
+  </p>
+  <p>
     <%= f.label :logo %><br />
-    <%= f.text_field :logo %>
-  </div>
-  <div class="actions">
+    <%= f.text_field :logo, :class => "box" %>
+  </p>
+  <p>
     <%= f.submit %>
-  </div>
+  </p>
 <% end %>
+</div>
