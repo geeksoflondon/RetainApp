@@ -106,7 +106,7 @@ class Attendee < ActiveRecord::Base
   
   def clean_up
     if self.twitter.start_with?('@')
-      self.twitter = self.twitter[1, self.twitter.length]
+      self.twitter = self.twitter.strip.gsub(/@/, "")
     end
   end
   
