@@ -24,4 +24,9 @@
 	</table>
 </div>
 <div class="in">
+	<%= form_tag '/attendees/bulkimport', :multipart => true do %>
+	  <label for="file">Import Attendees</label> <%= file_field_tag "file" %>
+	  <%= hidden_field_tag 'event_id', @event.id %>
+	  <%= submit_tag %>
+	<% end %>
 </div>
