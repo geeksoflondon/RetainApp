@@ -1,7 +1,9 @@
 RetainApp::Application.routes.draw do
   resources :attendees, :only => [:show, :new, :edit, :create, :update, :destroy]
+  match 'attendees/bulkimport' => 'attendees#bulkimport', :via => [:post]
+    
   resources :events
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
