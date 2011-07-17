@@ -18,18 +18,9 @@ gem 'jquery-rails'
 # Gems for cool stuff
 gem 'carrierwave'
 
+#Omniauth
+gem 'omniauth'
+
 group :development do 
   gem 'heroku'
 end
-
-group :test do
-  gem 'cucumber-rails', '1.0.0'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'webmock'
-  gem 'shoulda-context'
-  gem 'shoulda-matchers'
-  gem 'factory_girl'
-  gem 'mocha'
-end
-
