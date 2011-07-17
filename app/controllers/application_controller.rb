@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :current_user, :logged_in?, :admin?
-  helper_method :current_user, :logged_in?, :admin?
+  helper_method :display_notice?, :current_user, :logged_in?, :admin?
   
   private 
+  
+  def display_notice?
+    if flash[:notice] || flash[:errors]
+      return true
+    end
+  end
 
   def require_login 
     unless logged_in?

@@ -7,3 +7,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+setTimeout(function() { $('.check_main').slideUp(); }, 3000);

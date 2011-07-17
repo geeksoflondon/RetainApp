@@ -38,9 +38,11 @@
 		
 		<div class="clear"></div> 
 		
-		<div class="content"> 
+		<%=  render "shared/notices" if display_notice? %>
+		
+		<div class="content">
 			<%= yield %>
-		</div>
+		</div>	
 		
 		<p class="footer">All information is subject to the data protection act and is owned solely by the correct party</p>
 
