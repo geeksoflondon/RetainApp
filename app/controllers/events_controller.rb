@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+
+  before_filter :require_admin
+
   # GET /events
   def index
     @events = Event.all

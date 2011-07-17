@@ -2,6 +2,8 @@ require 'csv'
 
 class AttendeesController < ApplicationController
   
+  before_filter :require_admin
+  
   # GET /attendees/1
   def show
     @attendee = Attendee.find(params[:id])
