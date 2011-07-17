@@ -5,8 +5,7 @@ gem 'rails', '3.1.0.rc4'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-gem 'mysql'
+gem 'pg'
 
 # Asset template engines
 gem 'json'
@@ -18,9 +17,11 @@ gem 'jquery-rails'
 # Gems for cool stuff
 gem 'carrierwave'
 
-#Omniauth
+
+#auth
 gem 'omniauth'
 
 group :development do 
   gem 'heroku'
+  gem 'mysql'
 end

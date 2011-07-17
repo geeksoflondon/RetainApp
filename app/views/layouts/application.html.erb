@@ -11,7 +11,11 @@
 	<div class="wrapper"> 
 	
 		<h1 class="logo">RetainApp</h1> 
-		<p class="txt_right">Logged in as <strong>Kevin Prince</strong>  <span class="v_line"> | </span> <a href="#"> Logout</a></p> 
+		<p class="txt_right">
+			<%= "Logged in as #{current_user.name} |" if logged_in?  %>
+			<%= link_to "Logout".html_safe, "/logout" if logged_in? %>
+			<%= link_to image_tag("twitter_connect.gif"), "/login" if !logged_in? %>
+		</p>
 	
 	<!-- Navigation --> 
 	
