@@ -1,6 +1,8 @@
 <div class="in"> 
-	<h2>Editing <%= "#{@attendee.first_name} #{@attendee.last_name}" %></h2> 
-	<%= link_to 'Back', event_path(@attendee.event) %>
+	<h2>
+		Editing <%= "#{@attendee.first_name} #{@attendee.last_name}" %>
+		<span class="header_nav"><%= link_to 'Back', event_path(@attendee.event) %></span>
+	</h2> 
 </div>
 
 <%= render 'form' %>
