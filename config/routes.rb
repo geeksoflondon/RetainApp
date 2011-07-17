@@ -4,6 +4,12 @@ RetainApp::Application.routes.draw do
     
   resources :events
   
+  #authentication
+  match '/auth/:provider/callback' => 'authentications#create'
+  match '/auth/failure' => redirect("/")
+  match '/login' => redirect('/auth/twitter'), :as => "login"
+  match '/logout' => "authentications#destroy", :as => "logout"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
