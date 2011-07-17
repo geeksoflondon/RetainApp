@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>Encampment Self Service</title>
+		<link href="main.css" media="screen" rel="stylesheet" type="text/css" /> 
+		<link href='http://fonts.googleapis.com/css?family=Lato:900&v2' rel='stylesheet' type='text/css'>
+	</head>
+	<body>
+		<header>
+			<h1><img src="encampment.png" alt="encampment" width="640" height="110" /></h1>
+		</header>
+		<section class="edit">
+			<div class="badge">
+				<img src="encampment_badge.png" alt="encampment_badge"/>
+				<div class="details">
+					<h3>Firstname</h3>
+					<h3>Lastname</h3>
+					<h3 class="twitter_id">@TwitterName</h3>
+				</div>								
+				<h4>Attendee</h4>
+				<div class="sub_banner">
+					<img src="theiw.png" alt="theiw" class="sponsor" width="180" height="68" />
+					<img src="qr_code.jpg" alt="qr_code" width="68" height="68" class="qr" />
+				</div>				
+			</div>
+			<div class="your_details">
+				<p>Please confirm your details below</p>
+				<form action="thankyou.html" method="post">
+					<p>
+						<label for="first_name">First Name</label>
+						<input type="text" name="first_name" value="First Name">
+					</p>
+					
+					<p>
+						<label for="last_name">Last Name</label>
+						<input type="text" name="last_name" value="Last Name">
+					</p>
+	
+					<p>
+						<label for="first_name">Twitter ID</label>
+						<input type="text" name="twitter_id" value="TwitterName">
+					</p>
+
+					<p>
+						<label for="diet">Diet</label>
+						<select name="diet">
+						  <option value="volvo">Volvo</option>
+						  <option value="saab">Saab</option>
+						  <option value="mercedes">Mercedes</option>
+						  <option value="audi">Audi</option>
+						</select>
+					</p>
+					<p>
+						<label for="t_shirt">T-Shirt Size</label>
+						<select name="t_shirt">
+						  <option value="volvo">Volvo</option>
+						  <option value="saab">Saab</option>
+						  <option value="mercedes">Mercedes</option>
+						  <option value="audi">Audi</option>
+						</select>
+					</p>
+					<p>
+						<label for="public_profile">Public Profile</label>
+						<select name="public_profile">
+						  <option value="yes">Yes</option>
+						  <option value="no">No</option>
+						</select>
+					</p>
+					<p>
+						<input type="submit" value="Save My Details">
+					</p>
+				</form>
+			</div>
+		</section>
+	</body>
+</html>

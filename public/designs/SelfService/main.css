@@ -1,0 +1,259 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*Struts*/
+
+body {
+	font-family: 'Lato', sans-serif;
+	background-color: #F2F2F2;
+}
+
+h1 {
+	font-size: 4em;
+	text-align: center;
+}
+
+h2 {
+	font-size: 3em;
+	text-align: center;
+}
+
+p {
+	margin: 1.2em 0em;
+	text-align: center;
+}
+
+header {
+	margin: 1.5em;
+}
+
+section {
+	width: 960px;
+	background-color: #FAFAFA;
+	border: 1px solid #DDD;
+	margin: 0 auto;
+	padding: 1.5em;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+/*Big Button Screens*/
+
+form.huge_button {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 2em;
+}
+
+input[type="submit"].huge {
+	width: 90%;
+	padding: 30px 60px;
+	font-size: 1.6em;
+	overflow: auto;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+}
+
+form.small_button {
+	width: 80%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+input[type="submit"].small {
+	width: 60%;
+	padding: 10px 20px;
+	font-size: 1em;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+}
+
+/* Button Colors */
+input[type="submit"].orange {
+	border: 1px solid #FAFAFA;
+	background-color: #F7941D;
+	color: #FFF;
+}
+
+input[type="submit"].red {
+	border: 1px solid #FAFAFA;
+	background-color: #ED1C24;
+	color: #FFF;
+}
+
+/* Social Network Links */
+
+.social .buttons {
+	margin-top: 2em;
+}
+
+.social a {
+	width: 390px;
+	height: 100px;
+	background-position-x: 17px;
+	background-position-y: 15px;
+	margin: 0 auto;
+	margin-top: 1em; 
+	display: block;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.twitter {
+	background: url(twitter_bird.png) no-repeat #33CCFF;
+}
+
+.facebook {
+	background: url(facebook.png) no-repeat #3B5997;
+}
+
+/* Edit Badge Page */
+
+section.edit {
+	height: 550px;
+}
+
+.badge {
+	width: 370px;
+	height: 520px;
+	display: block;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #DDD;
+	float: left;
+	font-family: Arial;
+	font-weight: bold;
+}
+
+.badge .details {
+	margin-top: 50px;
+}
+
+.badge img {
+	margin: 0 auto;
+	display: block;
+	padding: 1em;	
+}
+
+.badge h3 {
+	font-size: 3em;
+	margin-bottom: 0.30em;
+}
+
+.badge h3.twitter_id {
+	margin-top: 1em;
+	font-size: 1.5em;
+}
+
+.badge h4 {
+	display: block;
+	width: 100%;
+	margin: 50px 0 20px 0;
+	padding: 15px 0 15px 0;	
+	background-color: #F11A18;
+	text-align: center;
+	color: #FFF;
+	text-transform: uppercase;
+	font-size: 1.5em;
+}
+
+.badge .sub_banner img {
+	padding: 0.8em 0.5em 0.8em 0.5em;
+	float: left;
+}
+
+.badge .sub_banner img.qr {
+	padding: 0.8em 0.5em 0.8em 0.5em;
+	float: right;
+}
+
+.your_details {
+	width: 460px;
+	display: block;
+	float: left;
+	padding: 0 50px 0 50px
+}
+
+.your_details p {
+	margin: 0 0 2em 0	;
+}
+
+.your_details label {
+	width: 120px;
+	margin-top: 0.5em;
+	float: left;
+	text-align: left;
+}
+
+.your_details input {
+	width: 340px;
+	padding: 1em;
+	border: 1px solid #DDD;
+	background-color: #FFF;	
+}
+
+.your_details select {
+	width: 340px;
+	height: 39px;
+	border: 1px solid #DDD;
+	background-color: #FFF;		
+}
+
+.your_details input[type="submit"] {
+	margin: 0px;
+	padding: 10px 20px;
+	border: 0px;
+	background-color: #F7941D;
+	color: white;
+	font-size: 14px;
+}
