@@ -1,17 +1,14 @@
+<% if @event.errors.any? %>
+<div class="check_main">
+	<% @event.errors.full_messages.each do |msg| %>
+		<div class="check">
+			<div class="good"><%= image_tag("x.gif", :class => "icon") %><%= msg %></div>
+		</div>
+	<% end %>
+</div>
+<% end %>
 <div class="in forms">
 <%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <p>
     <%= f.label :name %><br />
     <%= f.text_field :name, :class => "box" %>

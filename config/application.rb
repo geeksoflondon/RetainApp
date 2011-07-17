@@ -29,7 +29,7 @@ module RetainApp
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-
+    
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
@@ -38,5 +38,10 @@ module RetainApp
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    
+    # Fix bad frontend markup by backend devs (this is like Drupal all over again)
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| "<span class=\"field_error\">#{html_tag}</span>".html_safe }
+    
+    
   end
 end

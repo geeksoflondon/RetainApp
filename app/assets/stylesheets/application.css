@@ -70,6 +70,9 @@ a:hover{color:#f7941d;}
 
 .bad{}
 
+.field_error label {color:red;}
+.field_error input {border-color:red;}
+
 
 /*..................................................... Navigation .....................*/	
 	
