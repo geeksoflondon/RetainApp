@@ -100,6 +100,7 @@ input[type="submit"].huge {
 	overflow: auto;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
+	margin-top: 4px;
 	
 }
 
@@ -115,7 +116,13 @@ input[type="submit"].small {
 	font-size: 1em;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	
+	margin-top: 4px;	
+}
+
+input[type="submit"].huge:hover, input[type="submit"].small:hover {
+	border: solid 4px black;
+	cursor: pointer;
+	margin-top: 0px;
 }
 
 /* Button Colors */
@@ -135,26 +142,34 @@ input[type="submit"].red {
 
 .social .buttons {
 	margin-top: 2em;
+	clear: both;
+	display: block;
+	height: 140px;
 }
 
-.social a {
+.social .buttons a {
 	width: 390px;
 	height: 100px;
 	background-position-x: 17px;
 	background-position-y: 15px;
-	margin: 0 auto;
-	margin-top: 1em; 
+	margin: 1em; 
 	display: block;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 }
 
+.social .buttons a:hover {
+	border: 4px solid black;
+}
+
 .twitter {
-	background: url(twitter_bird.png) no-repeat #33CCFF;
+	background: url("twitter_bird.png") no-repeat scroll 19px 17px #33CCFF;	
+	float: left;
 }
 
 .facebook {
-	background: url(facebook.png) no-repeat #3B5997;
+	background: url(facebook.png) no-repeat 19px 17px #3B5997;
+	float: right;
 }
 
 /* Edit Badge Page */
@@ -245,6 +260,7 @@ section.edit {
 .your_details select {
 	width: 340px;
 	height: 39px;
+    padding: 10px;
 	border: 1px solid #DDD;
 	background-color: #FFF;		
 }
@@ -256,4 +272,11 @@ section.edit {
 	background-color: #F7941D;
 	color: white;
 	font-size: 14px;
+	margin-top: 1px;
+}
+
+.your_details input[type="submit"]:hover {
+	cursor: pointer;
+	border: 1px solid black;
+	margin-top: 0px;
 }
