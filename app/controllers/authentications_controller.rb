@@ -17,7 +17,13 @@ class AuthenticationsController < ApplicationController
   end
   
   def oneclick
-    logger.info params[:token]
+    @onetime = Oneclick.find_by_hash(params[:token])
+    unless @onetime
+      redirect_to '/selfservice/login'
+    else
+      auth = {'provider' => 'oneclick', 'uid' => @onetime.attendee_id, 'nickname' => 'hELLOW'}      
+      redirect_to '/selfservice/welcome'
+    end
   end
 
   def destroy

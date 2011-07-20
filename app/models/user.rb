@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     return authentication.user
   end
     
+  def self.onetime_auth()
+    
+  end
+    
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64

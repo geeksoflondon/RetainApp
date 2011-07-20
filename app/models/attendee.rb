@@ -39,11 +39,13 @@ class Attendee < ActiveRecord::Base
   
   #Relationships
   belongs_to :event
+  has_one :oneclick, :dependent => :destroy
   
   #At Events
   after_initialize :init
   before_validation :translate
   before_validation :clean_up
+  after_save :generate_oneclick
 
       
   #Validators
@@ -107,6 +109,13 @@ class Attendee < ActiveRecord::Base
   def clean_up
     if self.twitter.start_with?('@')
       self.twitter = self.twitter.strip.gsub(/@/, "")
+    end
+  end
+  
+  def generate_oneclick
+    unless Oneclick.find_by_attendee_id(self.id)
+      oneclick = Oneclick.new('attendee_id' => self.id)
+      oneclick.save
     end
   end
   
