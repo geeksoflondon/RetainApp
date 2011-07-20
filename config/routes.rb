@@ -1,11 +1,15 @@
 RetainApp::Application.routes.draw do
+  resources :create_one_clicks
+
   resources :attendees, :only => [:show, :new, :edit, :create, :update, :destroy]
   match 'attendees/bulkimport' => 'attendees#bulkimport', :via => [:post]
     
   resources :events
+  resources :selfservice
   
   #authentication
   match '/auth/:provider/callback' => 'authentications#create'
+  match '/oneclick/:token' => 'authentications#oneclick'
   match '/auth/failure' => redirect("/")
   match '/login' => redirect('/auth/twitter'), :as => "login"
   match '/logout' => "authentications#destroy", :as => "logout"

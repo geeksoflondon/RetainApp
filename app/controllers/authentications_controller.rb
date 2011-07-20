@@ -15,6 +15,10 @@ class AuthenticationsController < ApplicationController
     end
     redirect_to target, :notice => "Welcome!"
   end
+  
+  def oneclick
+    logger.info params[:token]
+  end
 
   def destroy
     cookies.delete(:auth_token)
