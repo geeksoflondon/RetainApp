@@ -17,11 +17,13 @@ class AuthenticationsController < ApplicationController
   end
   
   def oneclick
-    @onetime = Oneclick.find_by_hash(params[:token])
+    @onetime = Oneclick.find_by_token(params[:token])
     unless @onetime
       redirect_to '/selfservice/login'
     else
-      auth = {'provider' => 'oneclick', 'uid' => @onetime.attendee_id, 'nickname' => 'hELLOW'}      
+      auth = {'provider' => 'oneclick', 'uid' => @onetime.attendee_id, 'nickname' => "#{@onetime.nickname}"}
+      current_user = User.find_or_create_by_omniauth(auth)
+      cookies.permanent[:auth_token] = current_user.auth_token unless current_user.nil?
       redirect_to '/selfservice/welcome'
     end
   end
