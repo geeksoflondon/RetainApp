@@ -7,8 +7,7 @@ RetainApp::Application.routes.draw do
   resources :events
   
   match 'selfservice/hello' => 'selfservice#hello'
-  match 'selfservice/opps' => 'selfservice#opps'
-  
+
   #authentication
   match '/auth/:provider/callback' => 'authentications#create'
   match '/oneclick/:token' => 'authentications#oneclick'
