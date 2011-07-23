@@ -5,7 +5,9 @@ RetainApp::Application.routes.draw do
   match 'attendees/bulkimport' => 'attendees#bulkimport', :via => [:post]
     
   resources :events
-  resources :selfservice
+  
+  match 'selfservice/hello' => 'selfservice#hello'
+  match 'selfservice/opps' => 'selfservice#opps'
   
   #authentication
   match '/auth/:provider/callback' => 'authentications#create'
