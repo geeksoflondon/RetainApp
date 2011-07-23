@@ -7,6 +7,9 @@ RetainApp::Application.routes.draw do
   resources :events
   
   match 'selfservice/hello' => 'selfservice#hello'
+  match 'selfservice/social' => 'selfservice#social';
+  match 'selfservice/notcoming' => 'selfservice#notcoming';
+  match 'selfservice/thankyou' => 'selfservice#thankyou';
 
   #authentication
   match '/auth/:provider/callback' => 'authentications#create'

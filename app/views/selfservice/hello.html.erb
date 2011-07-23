@@ -1,10 +1,10 @@
 <h2>Hello <%= @attendee.first_name %>  <%= @attendee.last_name %></h2>
-<p>Are you coming to <%= @event.name %> at <%= @event.venue %> on <%= @event.english_date %> - From <%= @event.start_time %></p>
-<form id="form_id" name="form_name" action="social.html" method="get" class="huge_button">
-	<input type="hidden" name="choice" value="yes" />
-	<input type="submit" name="submit" value="Yes I am coming to Encampment" title="Yes I am coming to Encampment" class="huge orange" />
-</form>
-<form id="form_id" name="form_name" action="notcoming.html" method="get" class="small_button">
-	<input type="hidden" name="choice" value="no" />
-	<input type="submit" name="submit" value="Nope cancel my ticket!" class="small red" />
-</form>
+<p>Are you coming to <%= @event.name %> at <%= @event.venue %> <%= @event.english_date %> ?</p>
+
+<%= form_tag({:controller => "selfservice", :action => "social"}, :method => "post", :class => "huge_button") do %>
+  <%= submit_tag("Yes I am coming to Encampment", :class => "huge orange") %>
+<% end %>
+
+<%= form_tag({:controller => "selfservice", :action => "notcoming"}, :method => "post", :class => "small_button") do %>
+  <%= submit_tag("Sorry I can't make it now!", :class => "small red") %>
+<% end %>
