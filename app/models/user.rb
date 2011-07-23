@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :authentications
+  has_many :authentications, :dependent => :destroy
     
   before_create { generate_token(:auth_token) }  
     
@@ -12,19 +12,15 @@ class User < ActiveRecord::Base
 
     if authentication.user.nil?
       user = User.new
-      user.name = auth['user_info']['nickname']
+      user.name = auth['nickname']
       user.save
       authentication.user = user
       authentication.save
     end
-    
+
     return authentication.user
   end
-    
-  def self.onetime_auth()
-    
-  end
-    
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
