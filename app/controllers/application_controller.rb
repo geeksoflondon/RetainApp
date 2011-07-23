@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :current_user, :logged_in?, :admin?
-  helper_method :display_notice?, :current_user, :logged_in?, :admin?
+  helper_method :display_notice?, :current_user, :logged_in?, :admin?, :require_attendee
   
   private 
   
@@ -23,6 +23,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :notice => "You need to be an admin to get access to this feature" unless admin? || !logged_in?
   end
 
+  def require_attendee
+    require_login unless logged_in?
+    redirect_to root_url, :notice => "You are not an attendee, Sorry!" unless attendee? || !logged_in?
+  end
+
   def current_user
     @current_user ||= load_current_user
   end
@@ -34,7 +39,11 @@ class ApplicationController < ActionController::Base
   def admin?
     @admin = logged_in? && @current_user.is_admin
   end
-
+  
+  def attendee?
+    @attendee = @current_user.is_attendee
+  end
+  
   def load_current_user
     if cookies[:auth_token]
       begin

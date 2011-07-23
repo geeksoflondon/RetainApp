@@ -21,6 +21,13 @@ class User < ActiveRecord::Base
     return authentication.user
   end
 
+  def is_attendee
+    one_click = self.authentications.find_by_provider("oneclick")
+    unless one_click.nil?
+      @attendee = Attendee.find(one_click['user_id'])
+    end
+  end
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64

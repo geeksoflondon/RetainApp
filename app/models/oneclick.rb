@@ -19,5 +19,10 @@ class Oneclick < ActiveRecord::Base
   def nickname
     "#{self.attendee['first_name']} #{self.attendee['last_name']}"
   end
+  
+  def lockout
+    self.used = true
+    self.save
+  end
     
 end

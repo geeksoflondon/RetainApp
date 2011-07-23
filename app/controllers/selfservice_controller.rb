@@ -1,9 +1,9 @@
 class SelfserviceController < ApplicationController
-  
-  def index 
-  end
 
-  def show
+  before_filter :require_attendee
+
+  def hello
+    
   end
   
 end
