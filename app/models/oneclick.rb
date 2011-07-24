@@ -2,7 +2,7 @@ require "digest"
 
 class Oneclick < ActiveRecord::Base
   after_initialize :init
-  before_save :generate_token
+  before_create :generate_token
   
   validates_presence_of :attendee_id
   
