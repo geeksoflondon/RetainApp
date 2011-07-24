@@ -37,7 +37,8 @@
   </p>
   <p>
     <%= f.label :logo %><br />
-    <%= f.text_field :logo, :class => "box" %>
+ 	<%= image_tag(@event.logo.url) if @event.logo? %>
+    <%= f.file_field :logo, :class => "box" %>
   </p>
   <p>
     <%= f.submit %>

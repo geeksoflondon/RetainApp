@@ -6,4 +6,14 @@ class SelfserviceController < ApplicationController
     @event = @attendee.event
   end
   
+  def social
+  end
+  
+  def notcoming
+    
+  end
+  
+  def thankyou
+  end
+  
 end
