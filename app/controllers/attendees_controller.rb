@@ -83,6 +83,6 @@ class AttendeesController < ApplicationController
   
   
   ###We are not yet using the below may use later.
-  VALID_CSV_FIELDS = ['TICKET_ID','FIRST_NAME','LAST_NAME','PHONE','EMAIL','T_SHIRT','BADGE','DIET']
+  VALID_CSV_FIELDS = ['TICKET_ID','FIRST_NAME','LAST_NAME','PHONE','EMAIL','T_SHIRT','BADGE','DIET', 'TWITTER']
   
 end

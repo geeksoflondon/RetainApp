@@ -44,7 +44,7 @@ class Attendee < ActiveRecord::Base
   #At Events
   after_initialize :init
   before_validation :translate
-  before_validation :clean_up
+  #before_validation :clean_up
   after_save :generate_oneclick
 
       
@@ -107,8 +107,10 @@ class Attendee < ActiveRecord::Base
   end
   
   def clean_up
-    if self.twitter.start_with?('@')
-      self.twitter = self.twitter.strip.gsub(/@/, "")
+    unless self.twitter.empty?
+      if self.twitter.start_with?('@')
+        self.twitter = self.twitter.strip.gsub(/@/, "")
+      end
     end
   end
   
