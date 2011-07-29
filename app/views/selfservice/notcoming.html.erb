@@ -1,0 +1,8 @@
+<h2>Are you sure you want to cancel your ticket to <%= @event.name %> ?</h2>
+<%= form_tag({:controller => "selfservice", :action => "cancel"}, :method => "post", :class => "huge_button") do %>
+  <%= submit_tag("Yes I want to cancel my ticket!", :class => "huge red") %>
+<% end %>
+
+<%= form_tag({:controller => "selfservice", :action => "social"}, :method => "post", :class => "small_button") do %>
+  <%= submit_tag("No! I still want to come", :class => "small orange") %>
+<% end %>

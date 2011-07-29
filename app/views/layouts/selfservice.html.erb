@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<header>
-			<h1><img src="encampment.png" alt="encampment" width="640" height="110" /></h1>
+			<h1><%= image_tag(@event.logo.url) if @event.logo? %></h1>
 		</header>
 		<section>
 			<%= yield %>

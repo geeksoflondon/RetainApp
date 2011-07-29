@@ -4,7 +4,7 @@ class EventLogoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
   # include CarrierWave::RMagick
-  # include CarrierWave::ImageScience
+  include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -29,8 +29,8 @@ class EventLogoUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
+  # version :badge_logo do
+  #  process :scale => [372, 91]
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.

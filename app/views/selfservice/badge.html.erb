@@ -1,0 +1,50 @@
+<div class="edit">
+<div class="badge">
+	<img src="encampment_badge.png" alt="encampment_badge"/>
+	<div class="details">
+		<h3><%= @attendee.first_name %></h3>
+		<h3><%= @attendee.last_name %></h3>
+		<h3 class="twitter_id">@<%= @attendee.twitter %></h3>
+	</div>								
+	<h4><%= @attendee.badge %></h4>
+	<div class="sub_banner">
+		<img src="theiw.png" alt="theiw" class="sponsor" width="180" height="68" />
+		<img src="qr_code.jpg" alt="qr_code" width="68" height="68" class="qr" />
+	</div>				
+</div>
+<div class="your_details">
+	<p>Please confirm your details below</p>
+	<%=form_tag('/selfservice/update_badge', :method => :put) do %>
+		<p>
+			<label for="first_name">First Name</label>
+			<%= text_field(:attendee, :first_name, :size => 20) %>
+		</p>
+		
+		<p>
+			<label for="last_name">Last Name</label>
+			<%= text_field(:attendee, :last_name, :size => 20) %>
+		</p>
+
+		<p>
+			<label for="first_name">Twitter ID</label>
+			<%= text_field(:attendee, :twitter, :size => 20) %>
+		</p>
+
+		<p>
+			<label for="diet">Diet</label>
+			<%= select("attendee", :diet, options_from_collection_for_select(@attendee.diet_types.sort, :first, :last, @attendee['diet'])) %>
+		</p>
+		<p>
+			<label for="t_shirt">T-Shirt Size</label>
+			<%= select("attendee", :t_shirt, options_from_collection_for_select(@attendee.tshirt_types.sort, :first, :last, @attendee['t_shirt'])) %>
+		</p>
+		<p>
+			<label for="public_profile">Public Profile</label>
+			<%= select_tag "attendee", options_for_select({'Yes'=>'Yes', 'No' => 'No'}, 'No') %>
+		</p>
+		<p>
+			<input type="submit" value="Save My Details">
+		</p>
+	<% end %>
+</div>
+</div>
