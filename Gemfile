@@ -16,7 +16,6 @@ gem 'jquery-rails'
 
 # Gems for cool stuff
 gem 'carrierwave'
-gem 'image_science'
 
 
 #auth
