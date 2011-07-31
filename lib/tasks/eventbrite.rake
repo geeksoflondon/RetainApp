@@ -2,9 +2,9 @@ require 'json'
 require 'net/http'
 
 BADGE_TYPES = {
-  'attendee' => 'Attendee', 
-  'crew' => 'Crew', 
-  'sponsor' => 'Sponsor', 
+  'attendee' => 'Attendee',
+  'crew' => 'Crew',
+  'sponsor' => 'Sponsor',
   'venue_staff' => 'Venue Staff'
 }.freeze
 
@@ -13,13 +13,16 @@ API_KEY = ENV['EVENTBRITE_APIKEY']
 
 namespace :eventbrite do
   desc "Make a user an admin"
-  task :import_attendees, [:event_id, :retain_id] => :environment do |t, args|
+  task :import_attendees, [:retain_id] => :environment do |t, args|
 
     @retain_id = args.retain_id.to_i
     @event_id = args.event_id.to_i
-    
+
+    @event = Event.find(@retain_id)
+    @event_id = @event.eventbrite_id.to_i
+
     unless @retain_id.zero? && @event_id.zero?
-      
+
       tickets = get_tickets(@event_id)
       event_attendees = get_attendees(@event_id)
 
@@ -34,7 +37,7 @@ namespace :eventbrite do
         ai['badge'] = sort_badge(tickets[inbound_attendee['attendee']['ticket_id']])
         clean_attendees.push(ai)
       end
-    
+
       clean_attendees.each do |row|
         attendee = {}
         attendee = Attendee.where('ticket_id' => row["ticket_id"], 'event_id' => @retain_id)
@@ -48,15 +51,15 @@ namespace :eventbrite do
           attendee.update_attributes!(row)
           puts "#{row['first_name']} #{row['last_name']} was updated"
         end
-      
+
       end
-      
+
     else
-      
+
       puts "You did enter all arguments"
-      
+
     end
-    
+
   end
 end
 
@@ -69,7 +72,7 @@ def get_tickets(event_id)
    result = JSON.parse(data)
 
    tickets = {}
-   
+
    if result.has_key? 'Error'
       raise "web service error"
    else
@@ -97,14 +100,14 @@ def get_attendees(event_id)
 end
 
 def process_answers(dirty_answers)
-  
+
   clean_answers = {}
-  
+
   dirty_answers.each do |answer|
-    
+
     aq = answer['answer']['question']
     at = answer['answer']['answer_text']
-    
+
     if aq == 'Twitter Username'
       clean_answers['twitter'] = at
     elsif aq == 'A contact number'
@@ -115,16 +118,15 @@ def process_answers(dirty_answers)
       clean_answers['diet'] = at
     end
   end
-  
+
   return clean_answers
-  
+
 end
 
 def sort_badge(badge_name)
   unless BADGE_TYPES.has_value?(badge_name)
     return 'Attendee'
   end
-  
-  return badge_name
 
+  return badge_name
 end
