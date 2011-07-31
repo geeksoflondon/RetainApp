@@ -2,16 +2,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :current_user, :logged_in?, :admin?
   helper_method :display_notice?, :current_user, :logged_in?, :admin?, :require_attendee
-  
-  private 
-  
+
+  private
+
   def display_notice?
     if flash[:notice] || flash[:errors]
       return true
     end
   end
 
-  def require_login 
+  def require_login
     unless logged_in?
       cookies[:auth_token] = request.url unless request.xhr?
       redirect_to login_url
@@ -39,11 +39,11 @@ class ApplicationController < ActionController::Base
   def admin?
     @admin = logged_in? && @current_user.is_admin
   end
-  
+
   def attendee?
     @attendee = @current_user.is_attendee
   end
-  
+
   def load_current_user
     if cookies[:auth_token]
       begin
