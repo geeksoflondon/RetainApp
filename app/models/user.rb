@@ -1,9 +1,8 @@
 class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
-    
-  before_create { generate_token(:auth_token) }  
-    
-    
+
+  before_create { generate_token(:auth_token) }
+
   ###
   ### Finds and or creates a user based of the omniauth hash
   ###
@@ -24,7 +23,7 @@ class User < ActiveRecord::Base
   def is_attendee
     one_click = self.authentications.find_by_provider("oneclick")
     unless one_click.nil?
-      @attendee = Attendee.find(one_click['user_id'])
+      @attendee = Attendee.find(one_click['uid'])
     end
   end
 
