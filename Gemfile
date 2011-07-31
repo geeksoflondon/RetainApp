@@ -17,7 +17,6 @@ gem 'jquery-rails'
 # Gems for cool stuff
 gem 'carrierwave'
 
-
 #auth
 gem 'omniauth'
 
