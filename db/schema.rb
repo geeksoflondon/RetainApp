@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110720175421) do
+ActiveRecord::Schema.define(:version => 20110731135550) do
 
   create_table "attendees", :force => true do |t|
     t.integer  "event_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20110720175421) do
     t.datetime "updated_at"
     t.string   "event_url"
     t.string   "venue_url"
+    t.string   "eventbrite_id"
   end
 
   create_table "oneclicks", :force => true do |t|
