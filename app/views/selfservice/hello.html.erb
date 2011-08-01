@@ -1,7 +1,7 @@
 <h2>Hello <%= @attendee.first_name %>  <%= @attendee.last_name %></h2>
 <p>Are you coming to <%= @event.name %> at <%= @event.venue %> <%= @event.english_date %> ?</p>
 
-<%= form_tag({:controller => "selfservice", :action => "social"}, :method => "post", :class => "huge_button") do %>
+<%= form_tag({:controller => "selfservice", :action => "coming"}, :method => "post", :class => "huge_button") do %>
   <%= submit_tag("Yes I am coming to Encampment", :class => "huge orange") %>
 <% end %>
 

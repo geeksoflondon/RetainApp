@@ -3,10 +3,13 @@ RetainApp::Application.routes.draw do
 
   resources :attendees, :only => [:show, :new, :edit, :create, :update, :destroy]
   match 'attendees/bulkimport' => 'attendees#bulkimport', :via => [:post]
-    
+
   resources :events
-  
+
+  match 'selfservice/' => 'selfservice#index'
   match 'selfservice/hello' => 'selfservice#hello'
+  match 'selfservice/coming' => 'selfservice#coming';
+  match 'selfservice/auth' => 'selfservice#auth';
   match 'selfservice/social' => 'selfservice#social';
   match 'selfservice/notcoming' => 'selfservice#notcoming';
   match 'selfservice/cancel' => 'selfservice#cancel';
@@ -19,7 +22,7 @@ RetainApp::Application.routes.draw do
   match '/auth/failure' => redirect("/")
   match '/login' => redirect('/auth/twitter'), :as => "login"
   match '/logout' => "authentications#destroy", :as => "logout"
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

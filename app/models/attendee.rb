@@ -2,16 +2,16 @@ class Attendee < ActiveRecord::Base
 
   #Frozen Options
   VALID_STATUS = { 
-    'unconfirmed' => 'Unconfirmed', 
+    'unconfirmed' => 'Unconfirmed',
     'confirmed' => 'Confirmed',
     'attended' => 'Attended',
     'cancelled' => 'Cancelled'
   }.freeze
 
   VALID_BADGES = {
-    'attendee' => 'Attendee', 
-    'crew' => 'Crew', 
-    'sponsor' => 'Sponsor', 
+    'attendee' => 'Attendee',
+    'crew' => 'Crew',
+    'sponsor' => 'Sponsor',
     'venue_staff' => 'Venue Staff'
   }.freeze
 
@@ -120,4 +120,19 @@ class Attendee < ActiveRecord::Base
     end
   end
 
+  def transistion_status(to)
+    states = VALID_STATUS.collect {|x,y| x}
+
+    to = states.index(to).to_i
+    from = states.index(self.status).to_i
+
+    unless from > to
+      throw(to) {
+        logger.info "Invalid Transistion performed #{from} >. #{to}"
+      }
+    end
+
+    self.status = states.values(to)
+    self.save
+  end
 end

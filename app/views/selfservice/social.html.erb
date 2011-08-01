@@ -1,6 +1,6 @@
 <p>Thank you for confirming your attending <%= @event.name %></p>
 <p>To help build your public profile page and allow you to edit your details in the future please authenticate with twitter!</p>
 
-<%= link_to image_tag("twitter_connect_large.png"), {:action => 'badge', :controller => 'selfservice'}, {:class => 'twitter'} %>
+<%= link_to image_tag("twitter_connect_large.png"), {:action => 'auth', :controller => 'selfservice'}, {:class => 'twitter'} %>
 
 <p><%=link_to "I would rather skip this step!", {:action => 'badge', :controller => 'selfservice'}, {:class => 'twitter'}%></p>
