@@ -36,6 +36,8 @@ class Attendee < ActiveRecord::Base
     'm4' => 'Male Extra Large',
     'm5' => 'Male XXL'
   }.freeze
+  
+  VALID_PUBLIC_PROFILE = {'0' => 'No', '1' => 'Yes'}.freeze
 
   #Relationships
   belongs_to :event
@@ -66,12 +68,16 @@ class Attendee < ActiveRecord::Base
   validates_inclusion_of :diet, :in => VALID_DIETS,
       :message => "%{value} is not a valid diet"
 
+  validates_inclusion_of :public_profile, :in => VALID_PUBLIC_PROFILE,
+      :message => "%{value} is not a valid status"
+
   #These are the defaults when nothing else is set
   def init
     self.badge  ||= 'attendee'
     self.status ||= 'unconfirmed'
     self.t_shirt ||= 'm2'
     self.diet ||= 'everything'
+    self.public_profile ||= '1'
   end
 
   #These are methods to translate values
@@ -90,6 +96,10 @@ class Attendee < ActiveRecord::Base
   def tshirt_types
     @tshirt_types = VALID_TSHIRTS
   end
+  
+  def profile_types
+    @public_profile = VALID_PUBLIC_PROFILE
+  end
 
   def translate
     if VALID_BADGES.has_value?(self.badge)
@@ -103,6 +113,11 @@ class Attendee < ActiveRecord::Base
     if VALID_DIETS.has_value?(self.diet)
       self.diet = VALID_DIETS.key(self.diet)
     end
+    
+    if VALID_PUBLIC_PROFILE.has_value?(self.public_profile)
+      self.public_profile = VALID_PUBLIC_PROFILE.key(self.public_profile)
+    end
+    
   end
 
   def clean_up
@@ -120,19 +135,4 @@ class Attendee < ActiveRecord::Base
     end
   end
 
-  def transistion_status(to)
-    states = VALID_STATUS.collect {|x,y| x}
-
-    to = states.index(to).to_i
-    from = states.index(self.status).to_i
-
-    unless from > to
-      throw(to) {
-        logger.info "Invalid Transistion performed #{from} >. #{to}"
-      }
-    end
-
-    self.status = states.values(to)
-    self.save
-  end
 end

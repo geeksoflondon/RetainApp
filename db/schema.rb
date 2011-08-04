@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110731135550) do
+ActiveRecord::Schema.define(:version => 20110804192620) do
+
+  create_table "attendee_profile", :force => true do |t|
+    t.string   "profile_image_url"
+    t.string   "url"
+    t.string   "location"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "attendees", :force => true do |t|
     t.integer  "event_id"
@@ -26,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20110731135550) do
     t.string   "badge"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "public_profile"
   end
 
   add_index "attendees", ["event_id"], :name => "index_attendees_on_event_id"
