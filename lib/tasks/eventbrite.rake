@@ -40,7 +40,7 @@ namespace :eventbrite do
 
       clean_attendees.each do |row|
         attendee = {}
-        attendee = Attendee.where('ticket_id' => row["ticket_id"], 'event_id' => @retain_id)
+        attendee = Attendee.where('ticket_id' => row["ticket_id"], 'event_id' => @retain_id, )
         unless attendee.exists?
           row["event_id"] = @retain_id
           imported_attendee = Attendee.new(row)
@@ -48,8 +48,12 @@ namespace :eventbrite do
           puts "#{row['first_name']} #{row['last_name']} was created"
         else
           attendee = Attendee.find(attendee.first['id'])
-          attendee.update_attributes!(row)
-          puts "#{row['first_name']} #{row['last_name']} was updated"
+          unless attendee.status == 'confirmed'
+            attendee.update_attributes!(row)
+            puts "#{row['first_name']} #{row['last_name']} was updated"
+          else
+            puts "#{row['first_name']} #{row['last_name']} was not updated as confirmed"
+          end
         end
 
       end
