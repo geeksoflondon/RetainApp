@@ -7,9 +7,9 @@ class AuthenticationsController < ApplicationController
     omni_auth = request.env["omniauth.auth"]
     auth = {'provider' => 'twitter', 'uid' => omni_auth['uid'], 'nickname' => omni_auth['user_info']['nickname']}
 
-    # current_user = User.find_or_create_by_omniauth(auth)
-    # cookies.permanent[:auth_token] = current_user.auth_token unless current_user.nil?
-    # target = root_url
+    current_user = User.find_or_create_by_omniauth(auth)
+    cookies.permanent[:auth_token] = current_user.auth_token unless current_user.nil?
+    target = root_url
     unless session[:redirect].nil?
       target = session[:redirect]
       session.delete :redirect
