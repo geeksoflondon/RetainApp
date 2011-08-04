@@ -1,7 +1,7 @@
 class SelfserviceController < ApplicationController
 
   before_filter :require_attendee
-  # before_filter :require_confirmed, :except => [:coming, :cancel]
+  before_filter :require_confirmed, :except => [:index, :hello, :coming, :cancel]
   # before_filter :require_unconfirmed, :except => [:coming, :cancel]
   before_filter :load_common
 
@@ -17,19 +17,19 @@ class SelfserviceController < ApplicationController
   def coming
     @attendee.status = 'confirmed'
     @attendee.save
-    redirect_to selfservice_social_path
-  end
-
-  def social
-    logger.info @attendee.inspect
-  end
-
-  def auth
-    session[:redirect] = selfservice_badge_path
-    redirect_to '/auth/twitter'
+    redirect_to selfservice_badge_path
   end
 
   def badge
+    #Show the badge
+  end
+  
+  def updatebadge
+    if @attendee.update_attributes(params[:attendee])
+      redirect_to selfservice_thankyou_path
+    else
+      render :action => "badge"
+    end
   end
 
   def notcoming
@@ -43,6 +43,7 @@ class SelfserviceController < ApplicationController
   end
 
   def thankyou
+    #Not much to do here apart from show the thankyou screen.
   end
 
   def require_confirmed

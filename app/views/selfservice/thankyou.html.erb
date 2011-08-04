@@ -2,6 +2,7 @@
 
 <% if @attendee.status == 'confirmed' %>
 	<p>Your attendance is now <%= @attendee.status %> and feel free to come back to update your details if anything changes!</p>
+	<p>We have also despatched robot ninjas to start building your public profile from twitter, lanyrd, and gravatar and we will notify you when is ready.</p>
 <% end %>
 
 <% if @attendee.status == 'cancelled' %>

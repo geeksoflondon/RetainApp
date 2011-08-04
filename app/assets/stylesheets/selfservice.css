@@ -150,7 +150,7 @@ input[type="submit"].red {
 /* Edit Badge Page */
 
 .edit {
-	height: 550px;
+	min-height: 550px;
 }
 
 .badge {
@@ -180,9 +180,15 @@ input[type="submit"].red {
 	margin-bottom: 0.30em;
 }
 
+.badge h3 {
+	height: 48px;
+}
+
+
 .badge h3.twitter_id {
 	margin-top: 1em;
 	font-size: 1.5em;
+	height: 24px;
 }
 
 .badge h4 {
@@ -190,12 +196,14 @@ input[type="submit"].red {
 	width: 100%;
 	margin: 50px 0 20px 0;
 	padding: 15px 0 15px 0;	
-	background-color: #F11A18;
 	text-align: center;
 	color: #FFF;
 	text-transform: uppercase;
 	font-size: 1.5em;
 }
+
+.badge h4.crew {background-color: #4040FF;}
+.badge h4.attendee {background-color: #F11A18;}
 
 .badge .sub_banner img {
 	padding: 0.8em 0.5em 0.8em 0.5em;
@@ -254,4 +262,12 @@ input[type="submit"].red {
 	cursor: pointer;
 	border: 1px solid black;
 	margin-top: 0px;
+}
+
+.your_details p.error {
+	padding: 0.5em;
+	margin: 1em 0 1em 0;
+	text-align: left;
+	border:1px solid red; 
+	background-color:#FF8080;
 }

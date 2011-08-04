@@ -1,33 +1,39 @@
 <div class="edit">
 <div class="badge">
-	<img src="encampment_badge.png" alt="encampment_badge"/>
+	<%= image_tag("encampment_badge.png") %>
 	<div class="details">
-		<h3><%= @attendee.first_name %></h3>
-		<h3><%= @attendee.last_name %></h3>
+		<h3 class="first_name"><%= @attendee.first_name %></h3>
+		<h3 class="last_name"><%= @attendee.last_name %></h3>
 		<h3 class="twitter_id">@<%= @attendee.twitter %></h3>
 	</div>								
-	<h4><%= @attendee.badge %></h4>
+	<h4 class="<%= @attendee.badge %>"><%= @attendee.badge %></h4>
 	<div class="sub_banner">
-		<img src="theiw.png" alt="theiw" class="sponsor" width="180" height="68" />
-		<img src="qr_code.jpg" alt="qr_code" width="68" height="68" class="qr" />
+	<%= image_tag("theiw.png", :class => "sponsor") %>
+	<%= image_tag("qr_code.jpg", :class => "qr") %>
 	</div>				
 </div>
 <div class="your_details">
-	<p>Please confirm your details below</p>
-	<%=form_tag('/selfservice/update_badge', :method => :put) do %>
+	<% if @attendee.errors.any? %>
+		<% @attendee.errors.full_messages.each do |msg| %>
+			<p class="error"><%= msg %></p>
+		<% end %>
+	<% end %>
+	
+	<%=form_tag(selfservice_updatebadge_path, :method => :put) do %>
+		
 		<p>
 			<label for="first_name">First Name</label>
-			<%= text_field(:attendee, :first_name, :size => 20) %>
+			<%= text_field(:attendee, :first_name, :size => 20, :maxlength => 12) %>
 		</p>
 		
 		<p>
 			<label for="last_name">Last Name</label>
-			<%= text_field(:attendee, :last_name, :size => 20) %>
+			<%= text_field(:attendee, :last_name, :size => 20, :maxlength => 12) %>
 		</p>
 
 		<p>
-			<label for="first_name">Twitter ID</label>
-			<%= text_field(:attendee, :twitter, :size => 20) %>
+			<label for="twitter">Twitter ID</label>
+			<%= text_field(:attendee, :twitter, :size => 20, :maxlength => 12) %>
 		</p>
 
 		<p>
@@ -40,7 +46,7 @@
 		</p>
 		<p>
 			<label for="public_profile">Public Profile</label>
-			<%= select_tag "attendee", options_for_select({'Yes'=>'Yes', 'No' => 'No'}, 'No') %>
+			<%= select("attendee", :public_profile, options_from_collection_for_select(@attendee.profile_types.sort, :first, :last, @attendee['public_profile'])) %>
 		</p>
 		<p>
 			<input type="submit" value="Save My Details">
