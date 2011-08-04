@@ -9,11 +9,10 @@ RetainApp::Application.routes.draw do
   match 'selfservice/' => 'selfservice#index'
   match 'selfservice/hello' => 'selfservice#hello'
   match 'selfservice/coming' => 'selfservice#coming';
-  match 'selfservice/auth' => 'selfservice#auth';
-  match 'selfservice/social' => 'selfservice#social';
   match 'selfservice/notcoming' => 'selfservice#notcoming';
   match 'selfservice/cancel' => 'selfservice#cancel';
   match 'selfservice/badge' => 'selfservice#badge';
+  match 'selfservice/updatebadge' => 'selfservice#updatebadge';
   match 'selfservice/thankyou' => 'selfservice#thankyou';
 
   #authentication
