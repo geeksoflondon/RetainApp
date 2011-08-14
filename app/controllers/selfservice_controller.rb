@@ -1,8 +1,6 @@
 class SelfserviceController < ApplicationController
 
   before_filter :require_attendee
-  before_filter :require_confirmed, :except => [:index, :hello, :coming, :cancel]
-  # before_filter :require_unconfirmed, :except => [:coming, :cancel]
   before_filter :load_common
 
 
@@ -46,13 +44,8 @@ class SelfserviceController < ApplicationController
     #Not much to do here apart from show the thankyou screen.
   end
 
-  def require_confirmed
-    unless @attendee.status == 'confirmed'
-    end
-  end
-
   def load_common
     @event = @attendee.event
   end
-
+  
 end
