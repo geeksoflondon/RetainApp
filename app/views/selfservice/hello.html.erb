@@ -2,7 +2,7 @@
 <p>Are you coming to <%= @event.name %> at <%= @event.venue %> <%= @event.english_date %> ?</p>
 
 <%= form_tag({:controller => "selfservice", :action => "coming"}, :method => "post", :class => "huge_button") do %>
-  <%= submit_tag("Yes I am coming to Encampment", :class => "huge orange") %>
+  <%= submit_tag("Yes I am coming to #{@event.name}", :class => "huge orange") %>
 <% end %>
 
 <%= form_tag({:controller => "selfservice", :action => "notcoming"}, :method => "post", :class => "small_button") do %>

@@ -1,6 +1,6 @@
 <div class="edit">
 <div class="badge">
-	<%= image_tag("encampment_badge.png") %>
+	<%= image_tag(@event.logo.badge_logo.url) if @event.logo? %>
 	<div class="details">
 		<h3 class="first_name"><%= @attendee.first_name %></h3>
 		<h3 class="last_name"><%= @attendee.last_name %></h3>
@@ -8,7 +8,6 @@
 	</div>								
 	<h4 class="<%= @attendee.badge %>"><%= @attendee.badge %></h4>
 	<div class="sub_banner">
-	<%= image_tag("theiw.png", :class => "sponsor") %>
 	<%= image_tag("qr_code.jpg", :class => "qr") %>
 	</div>				
 </div>
