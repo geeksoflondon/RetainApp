@@ -10,6 +10,12 @@ class EventsController < ApplicationController
   # GET /events/1
   def show
     @event = Event.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.csv { render :template => 'events/csv' }
+    end
+
   end
 
   # GET /events/new
