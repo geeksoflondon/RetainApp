@@ -28,15 +28,15 @@ class Event < ActiveRecord::Base
   end
 
   def confirmed
-    Attendee.where('event_id = ? & status LIKE ?', self.id, 'confirmed').count
+    Attendee.where('event_id = ? AND status LIKE ?', self.id, 'confirmed').count
   end
 
   def unconfirmed
-    Attendee.where('event_id = ? & status LIKE ?', self.id, 'unconfirmed').count
+    Attendee.where('event_id = ? AND status LIKE ?', self.id, 'unconfirmed').count
   end
 
   def cancelled
-    Attendee.where('event_id = ? & status LIKE ?', self.id, 'cancelled').count
+    Attendee.where('event_id = ? AND status LIKE ?', self.id, 'cancelled').count
   end
 
   def attending
