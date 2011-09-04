@@ -47,7 +47,7 @@ class Event < ActiveRecord::Base
     if Time.now.to_date < self.start
       return 'N/A'
     else
-      return Attendee.where('event_id = ? & status LIKE ?', self.id, 'attended').count
+      return Attendee.where('event_id = ? AND status LIKE ?', self.id, 'attended').count
     end
   end
 
@@ -55,7 +55,7 @@ class Event < ActiveRecord::Base
     if Time.now.to_date < self.start
       return 'N/A'
     else
-      return Attendee.where('event_id = ? & status NOT LIKE ?', self.id, 'attended').count
+      return Attendee.where('event_id = ? AND status NOT LIKE ?', self.id, 'attended').count
     end
   end
 
