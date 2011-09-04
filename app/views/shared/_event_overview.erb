@@ -1,0 +1,23 @@
+<div class="in dashboard_table">
+    <h2><%= @event.name %></h2>
+    <table width="850" border="0" cellspacing="0" cellpadding="10" class="table_main">
+      <tbody><tr style="background-color:#d9d8d8; font-size:14px;">
+        <td width="120" style="text-align: center;"><strong>Sign Ups</strong></td>
+        <td width="120" style="text-align: center;"><strong>Confirmed</strong></td>
+        <td width="120" style="text-align: center;"><strong>Unconfirmed</strong></td>
+        <td width="120" style="text-align: center;"><strong>Cancellations</strong></td>
+        <td width="120" style="text-align: center;"><strong>Attending</strong></td>
+        <td width="120" style="text-align: center;"><strong>Show</strong></td>
+        <td width="120" style="text-align: center;"><strong>No Show</strong></td>
+      </tr>
+      <tr class="gray">
+        <td style="text-align: center;"><%= @event.signups %></td>
+        <td style="text-align: center;"><%= @event.confirmed %></td>
+        <td style="text-align: center;"><%= @event.unconfirmed %></td>
+        <td style="text-align: center;"><%= @event.cancelled %></td>
+        <td style="text-align: center;"><%= @event.attending %></td>
+        <td style="text-align: center;"><%= @event.attended %></td>
+        <td style="text-align: center;"><%= @event.no_show %></td>
+      </tr>
+    </tbody></table>    
+</div>
