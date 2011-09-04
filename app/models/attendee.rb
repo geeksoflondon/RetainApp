@@ -1,5 +1,8 @@
 class Attendee < ActiveRecord::Base
 
+  #Default Ordering
+  default_scope order('first_name')
+
   #Frozen Options
   VALID_STATUS = { 
     'unconfirmed' => 'Unconfirmed',
@@ -36,7 +39,7 @@ class Attendee < ActiveRecord::Base
     'm4' => 'Male Extra Large',
     'm5' => 'Male XXL'
   }.freeze
-  
+
   VALID_PUBLIC_PROFILE = {'0' => 'No', '1' => 'Yes'}.freeze
 
   #Relationships
@@ -55,6 +58,8 @@ class Attendee < ActiveRecord::Base
   validates :email, :presence => true,
                     :length => {:minimum => 3, :maximum => 254},
                     :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
+
+  validates :ticket_id, :uniqueness => :ticket_id
 
   validates_inclusion_of :status, :in => VALID_STATUS,
       :message => "%{value} is not a valid status"
@@ -96,7 +101,7 @@ class Attendee < ActiveRecord::Base
   def tshirt_types
     @tshirt_types = VALID_TSHIRTS
   end
-  
+
   def profile_types
     @public_profile = VALID_PUBLIC_PROFILE
   end
@@ -113,11 +118,11 @@ class Attendee < ActiveRecord::Base
     if VALID_DIETS.has_value?(self.diet)
       self.diet = VALID_DIETS.key(self.diet)
     end
-    
+
     if VALID_PUBLIC_PROFILE.has_value?(self.public_profile)
       self.public_profile = VALID_PUBLIC_PROFILE.key(self.public_profile)
     end
-    
+
   end
 
   def clean_up
