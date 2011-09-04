@@ -28,12 +28,20 @@ class AuthenticationsController < ApplicationController
       auth = {'provider' => 'oneclick', 'uid' => @onetime.attendee_id, 'nickname' => @onetime.nickname}
       current_user = User.find_or_create_by_omniauth(auth)
       cookies.permanent[:auth_token] = current_user.auth_token unless current_user.nil?
+      cookies.permanent[:oneclick] = true
       redirect_to '/selfservice/hello'
     end
   end
 
+  def setup
+    request.env['omniauth.strategy'].consumer_key = ENV['TWITTER_KEY']
+    request.env['omniauth.strategy'].consumer_secret = ENV['TWITTER_SECRET']
+    render :text => "Setup complete.", :status => 404
+  end
+
   def destroy
     cookies.delete(:auth_token)
+    cookies.delete(:oneclick)
     redirect_to root_url, :notice => "Bye, bye!"
   end
 end
