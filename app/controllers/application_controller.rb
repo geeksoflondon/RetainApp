@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :current_user, :logged_in?, :admin?
+  before_filter :current_user, :logged_in?, :admin?, :redirect_one_click
   helper_method :display_notice?, :current_user, :logged_in?, :admin?, :require_attendee
 
   private
@@ -26,6 +26,14 @@ class ApplicationController < ActionController::Base
   def require_attendee
     require_login unless logged_in?
     redirect_to root_url, :notice => "You are not an attendee, Sorry!" unless attendee? || !logged_in?
+  end
+
+  def redirect_one_click
+    if cookies['oneclick'] && params[:controller] != 'selfservice'
+        if params[:controller] != 'authentications' && params[:method] != 'destroy'
+          redirect_to selfservice_url
+        end
+    end
   end
 
   def current_user
