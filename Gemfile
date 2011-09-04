@@ -14,8 +14,10 @@ gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
 
-# Gems for cool stuff
+# Gems for image uploads
 gem 'carrierwave'
+gem 'fog'
+gem  'rmagick'
 
 #auth
 gem 'omniauth'
