@@ -8,45 +8,47 @@
 </head>
 <body>
 
-	<div class="wrapper"> 
-	
-		<h1 class="logo">RetainApp</h1> 
-		<p class="txt_right">
-			<%= "Logged in as #{current_user.name} |" if logged_in?  %>
-			<%= link_to "Logout".html_safe, "/logout" if logged_in? %>
-			<%= link_to image_tag("twitter_connect.gif"), "/login" if !logged_in? %>
-		</p>
-	
-	<!-- Navigation --> 
-	
-		<div class="navigation"> 
-				<ul> 
-					<li><%= link_to 'HOME', root_path %></li> 
-					<li><%= link_to 'EVENTS', events_path() %></li> 
-					<li><a href="#">RETAIN</a></li> 
-					<li><a href="#">SCAN</a></li> 
-				</ul> 
-			
-				<div id="searchform"> 
-					<form method="get" action=""> 
-					<input type="text" value="find something good..." class="search_box" name="search" onclick="this.value='';"  /> 
-					<input type="submit" class="search_btn" value="SEARCH" /> 
-					</form> 
-				</div> 
-			
-		</div>
-		
-		<div class="clear"></div> 
-		
-		<%=  render "shared/notices" if display_notice? %>
-		
-		<div class="content">
-			<%= yield %>
-		</div>	
-		
-		<p class="footer">All information is subject to the data protection act and is owned solely by the correct party</p>
+    <div class="wrapper"> 
+    
+        <h1 class="logo"><%= image_tag("geeksoflondon.png") %></h1> 
+        <p class="txt_right">
+            <%= "Logged in as #{current_user.name} |" if logged_in?  %>
+            <%= link_to "Logout".html_safe, "/logout" if logged_in? %>
+            <%= link_to image_tag("twitter_connect.gif"), "/login" if !logged_in? %>
+        </p>
+    
+    <!-- Navigation --> 
+    
+        <div class="navigation"> 
+                <ul> 
+                    <li><%= link_to 'HOME', root_path %></li> 
+                    <li><%= link_to 'EVENTS', events_path() unless !admin? %></li> 
+                    <li><a href="#">ON-SITE</a></li> 
+                    <li><a href="#">REPORTS</a></li> 
+                </ul> 
+            
+                <div id="searchform"> 
+                    <form method="get" action=""> 
+                    <input type="text" value="find something good..." class="search_box" name="search" onclick="this.value='';"  /> 
+                    <input type="submit" class="search_btn" value="SEARCH" /> 
+                    </form> 
+                </div> 
+            
+        </div>
+        
+        <div class="clear"></div> 
+        
+        <%=  render "shared/notices" if display_notice? %>
+        
+        <div class="content">
+            <%= yield if admin? %>
+            <%= "Please Login" if !admin? %>
+            
+        </div>  
+        
+        <p class="footer">All information in this app is considered privileged and should not be shared.</p>
 
-	</div>
+    </div>
 
 </body>
 </html>
