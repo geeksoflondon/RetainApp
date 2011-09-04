@@ -21,7 +21,7 @@ class SelfserviceController < ApplicationController
   def badge
     #Show the badge
   end
-  
+
   def updatebadge
     if @attendee.update_attributes(params[:attendee])
       redirect_to selfservice_thankyou_path
@@ -47,5 +47,5 @@ class SelfserviceController < ApplicationController
   def load_common
     @event = @attendee.event
   end
-  
+
 end
