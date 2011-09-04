@@ -34,7 +34,7 @@ a:hover{color:#f7941d;}
 
 /*.............................................................Header.................... */
 
-.logo{float:left; margin:25px 0;}
+.logo{float:left; margin:15px 0;}
 
 .txt_right{ float:right; margin-top:15px;}
 
@@ -119,6 +119,8 @@ td { padding: 12px; text-align:left; }
 .table_main { border-top: 1px solid #bab9b9; border-right: 1px solid #bab9b9; border-left: 1px solid #bab9b9; margin-top:20px;}
 
 .table_main .delete {background:url(images/x2.gif) center left no-repeat; padding-left:12px;}
+
+.dashboard_table {margin-bottom: 40px;}
 
 tr td {border-bottom: 1px solid #bab9b9;}
 

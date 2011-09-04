@@ -155,7 +155,7 @@ input[type="submit"].red {
 
 .badge {
 	width: 370px;
-	height: 520px;
+	min-height: 520px;
 	display: block;
 	padding: 10px;
 	background-color: #fff;
@@ -178,6 +178,7 @@ input[type="submit"].red {
 .badge h3 {
 	font-size: 3em;
 	margin-bottom: 0.30em;
+	text-transform: lowercase;
 }
 
 .badge h3 {
