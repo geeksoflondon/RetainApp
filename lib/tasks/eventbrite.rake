@@ -13,15 +13,12 @@ API_KEY = ENV['EVENTBRITE_APIKEY']
 
 namespace :eventbrite do
   desc "Make a user an admin"
-  task :import_attendees, [:retain_id] => :environment do |t, args|
+  task :import_attendees => :environment do |t, args|
 
-    @retain_id = args.retain_id.to_i
-    @event_id = args.event_id.to_i
+    Event.where('start <= ?', Time.now + 14.days).find(:all).each do |event|
 
-    @event = Event.find(@retain_id)
+    @event = event
     @event_id = @event.eventbrite_id.to_i
-
-    unless @retain_id.zero? && @event_id.zero?
 
       tickets = get_tickets(@event_id)
       event_attendees = get_attendees(@event_id)
@@ -40,9 +37,9 @@ namespace :eventbrite do
 
       clean_attendees.each do |row|
         attendee = {}
-        attendee = Attendee.where('ticket_id' => row["ticket_id"], 'event_id' => @retain_id, )
+        attendee = Attendee.where('ticket_id' => row["ticket_id"], 'event_id' => @event.id, )
         unless attendee.exists?
-          row["event_id"] = @retain_id
+          row["event_id"] = @event.id
           imported_attendee = Attendee.new(row)
           imported_attendee.save!
           puts "#{row['first_name']} #{row['last_name']} was created"
@@ -57,13 +54,7 @@ namespace :eventbrite do
         end
 
       end
-
-    else
-
-      puts "You did enter all arguments"
-
     end
-
   end
 end
 
