@@ -28,6 +28,7 @@ namespace :eventbrite do
       event_attendees['attendees'].each do |inbound_attendee|
         ai = process_answers(inbound_attendee['attendee']['answers'])
         ai['ticket_id'] = inbound_attendee['attendee']['id']
+        ai['barcode'] = get_barcode(inbound_attendee['attendee']['barcodes'])
         ai['first_name'] = inbound_attendee['attendee']['first_name']
         ai['last_name'] = inbound_attendee['attendee']['last_name']
         ai['email'] = inbound_attendee['attendee']['email']
@@ -82,7 +83,7 @@ end
 
 def get_attendees(event_id)
    base_url = "http://www.eventbrite.com/json/event_list_attendees?app_key=#{API_KEY}&user_key=#{USER_KEY}"
-   url = "#{base_url}&id=#{event_id}&count=9999"
+   url = "#{base_url}&id=#{event_id}&count=9999&show_full_barcodes=true"
    resp = Net::HTTP.get_response(URI.parse(url))
    data = resp.body
 
@@ -124,4 +125,9 @@ def sort_badge(badge_name)
   end
 
   return badge_name
+end
+
+def get_barcode(barcodes)
+  b = barcodes.first
+  b['barcode']['id']
 end

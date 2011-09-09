@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804192620) do
+ActiveRecord::Schema.define(:version => 20110904224810) do
 
   create_table "attendee_profile", :force => true do |t|
     t.string   "profile_image_url"
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20110804192620) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "public_profile"
+    t.string   "barcode"
   end
 
   add_index "attendees", ["event_id"], :name => "index_attendees_on_event_id"
@@ -46,6 +48,14 @@ ActiveRecord::Schema.define(:version => 20110804192620) do
     t.string   "provider"
     t.string   "uid"
     t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "checkins", :force => true do |t|
+    t.integer  "attendee_id"
+    t.integer  "event_id"
+    t.boolean  "onsite"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

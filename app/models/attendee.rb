@@ -1,8 +1,5 @@
 class Attendee < ActiveRecord::Base
 
-  #Default Ordering
-  default_scope order('first_name')
-
   #Frozen Options
   VALID_STATUS = { 
     'unconfirmed' => 'Unconfirmed',
@@ -45,12 +42,17 @@ class Attendee < ActiveRecord::Base
   #Relationships
   belongs_to :event
   has_one :oneclick, :dependent => :destroy
+  has_one :checkin, :dependent => :destroy
 
   #At Events
   after_initialize :init
   before_validation :translate
   #before_validation :clean_up
-  after_save :generate_oneclick
+  after_create :generate_oneclick
+  after_create :generate_checkin
+
+  #Default Ordering
+  default_scope order('first_name')
 
   #Validators
   validates_presence_of :event_id, :status
@@ -106,6 +108,12 @@ class Attendee < ActiveRecord::Base
     @public_profile = VALID_PUBLIC_PROFILE
   end
 
+  def scanned!
+    self.checkin.scan
+    self.status = 'attended'
+    self.save
+  end
+
   def translate
     if VALID_BADGES.has_value?(self.badge)
       self.badge = VALID_BADGES.key(self.badge)
@@ -137,6 +145,13 @@ class Attendee < ActiveRecord::Base
     unless Oneclick.find_by_attendee_id(self.id)
       oneclick = Oneclick.new('attendee_id' => self.id)
       oneclick.save
+    end
+  end
+
+  def generate_checkin
+    unless Checkin.find_by_attendee_id(self.id)
+      checkin = Checkin.new('attendee_id' => self.id)
+      checkin.save
     end
   end
 

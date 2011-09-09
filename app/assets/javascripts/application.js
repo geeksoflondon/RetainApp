@@ -13,8 +13,17 @@ setTimeout(function() { $('.error').slideUp(); }, 3000);
 
 $(document).ready(function() {
 	
+	if($('#onsite_search').length > 0){
+		$('#onsite_search').focus();
+	} else if($('.search_box').length > 0) {
+		$('.search_box').focus()
+	}
+	
 	///Is this a badge editing screen
 	if (($(".badge").length > 0) && ($(".your_details").length > 0)){
+		
+		$('#attendee_first_name').focus();
+		
 		$('#attendee_first_name').bind("keyup keydown change focus focusout", (function() {
 			$(".first_name").text($('#attendee_first_name').val())
 		}));

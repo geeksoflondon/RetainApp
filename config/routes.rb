@@ -1,11 +1,14 @@
 RetainApp::Application.routes.draw do
-  resources :create_one_clicks
 
   resources :attendees, :only => [:show, :new, :edit, :create, :update, :destroy]
   match 'attendees/bulkimport' => 'attendees#bulkimport', :via => [:post]
 
   resources :events
+  match 'events/:id/:filter' => 'events#show'
 
+  resources :onsite
+
+  #self service
   match 'selfservice/' => 'selfservice#index'
   match 'selfservice/hello' => 'selfservice#hello'
   match 'selfservice/coming' => 'selfservice#coming';

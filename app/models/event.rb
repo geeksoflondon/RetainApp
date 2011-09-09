@@ -13,6 +13,10 @@ class Event < ActiveRecord::Base
     Event.where('start <= ?', Time.now + 14.days).find(:all)
   end
 
+  def self.now
+    Event.where('start < ?', Time.now).find(:first)
+  end
+
   def english_date
     #Is the event one or two days?
     event_length = (self.end - self.start).to_i
