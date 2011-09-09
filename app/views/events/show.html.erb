@@ -6,8 +6,10 @@
 	
 	<p><%= @event.venue %> | <%= @event.start.strftime("%e %b %g") %> - <%= @event.end.strftime("%e %b %g") %></p> 
 </div>
+
 <hr>
 <div class="in">
+	<p><b>Filter By:</b> <%= render 'shared/filter' %> </p>
 	<table width="850" border="0" cellspacing="0" cellpadding="10" class="table_main" > 
 		<tr style="background-color:#d9d8d8; font-size:14px;"> 
 			<td width="300"><strong>Name</strong></td> 
@@ -15,7 +17,7 @@
 			<td width="200"><strong>Status</strong></td> 
 			<td width="150"></td> 
 		</tr>
-		<% @event.attendees.each do |attendee| %>
+		<% @attendees.each do |attendee| %>
 		<tr class="<%= cycle("gray", "white") %>"> 
 			<td><%= link_to "#{attendee.first_name} #{attendee.last_name}", edit_attendee_path(attendee) %></td> 
 			<td><%= attendee.badge_types[attendee.badge] %></td> 
@@ -25,10 +27,10 @@
 		<% end %>
 	</table>
 </div>
-<div class="in">
+<!-- <div class="in">
 	<%= form_tag '/attendees/bulkimport', :multipart => true do %>
 	  <label for="file">Import Attendees</label> <%= file_field_tag "file" %>
 	  <%= hidden_field_tag 'event_id', @event.id %>
 	  <%= submit_tag %>
 	<% end %>
-</div>
+</div> -->

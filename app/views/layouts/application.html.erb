@@ -20,20 +20,12 @@
     <!-- Navigation --> 
     
         <div class="navigation"> 
-                <ul> 
-                    <li><%= link_to 'HOME', root_path %></li> 
-                    <li><%= link_to 'EVENTS', events_path() unless !admin? %></li> 
-                    <li><%= link_to 'ON-SITE', onsite_index_path() unless !admin? %><li> 
-                    <li><a href="#">REPORTS</a></li> 
-                </ul> 
-            
-                <div id="searchform"> 
-                    <form method="get" action=""> 
-                    <input type="text" value="find something good..." class="search_box" name="search" onclick="this.value='';"  /> 
-                    <input type="submit" class="search_btn" value="SEARCH" /> 
-                    </form> 
-                </div> 
-            
+          <ul> 
+              <li><%= link_to 'HOME', root_path %></li> 
+              <li><%= link_to 'EVENTS', events_path() unless !admin? %></li> 
+              <li><%= link_to 'ON-SITE', onsite_index_path() unless !admin? %><li> 
+              <li><a href="#">KIOSK</a></li> 
+          </ul> 
         </div>
         
         <div class="clear"></div> 

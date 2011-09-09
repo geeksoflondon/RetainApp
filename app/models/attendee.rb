@@ -92,6 +92,10 @@ class Attendee < ActiveRecord::Base
     @status_types = VALID_STATUS
   end
 
+  def self.status_types
+    @status_types = VALID_STATUS
+  end
+
   def badge_types
     @badge_types = VALID_BADGES
   end

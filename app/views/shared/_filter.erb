@@ -1,0 +1,4 @@
+| <%= link_to('All', events_path+"/#{@event.id}") + " |" %> | 
+<% Attendee.status_types.each do |k,v| %>
+<%= link_to(v, events_path+"/#{@event.id}/#{k}") + " |" %>
+<% end %>

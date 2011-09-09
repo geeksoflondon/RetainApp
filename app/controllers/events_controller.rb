@@ -11,6 +11,12 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
 
+    unless params[:filter]
+      @attendees = Attendee.where('event_id' => params[:id])
+    else
+      @attendees = Attendee.where('event_id' => params[:id], 'status' => params[:filter])
+    end
+
     respond_to do |format|
       format.html
       format.csv { render :template => 'events/csv' }
