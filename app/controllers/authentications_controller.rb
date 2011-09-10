@@ -5,7 +5,7 @@ class AuthenticationsController < ApplicationController
 
   def create
     omni_auth = request.env["omniauth.auth"]
-    auth = {'provider' => 'twitter', 'uid' => omni_auth['uid'], 'nickname' => omni_auth['user_info']['nickname']}
+    auth = {'provider' => 'twitter', 'uid' => "#{omni_auth['uid']}", 'nickname' => omni_auth['user_info']['nickname']}
 
     current_user = User.find_or_create_by_omniauth(auth)
     cookies.permanent[:auth_token] = current_user.auth_token unless current_user.nil?
@@ -25,7 +25,7 @@ class AuthenticationsController < ApplicationController
       #Lockout and kill the token from future use
       @onetime.lockout
 
-      auth = {'provider' => 'oneclick', 'uid' => @onetime.attendee_id, 'nickname' => @onetime.nickname}
+      auth = {'provider' => 'oneclick', 'uid' => "#{@onetime.attendee_id}", 'nickname' => @onetime.nickname}
       current_user = User.find_or_create_by_omniauth(auth)
       cookies.permanent[:auth_token] = current_user.auth_token unless current_user.nil?
       cookies.permanent[:oneclick] = true
