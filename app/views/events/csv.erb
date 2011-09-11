@@ -1,4 +1,4 @@
-Name, First Name, Last Name, Email, Status, Badge
+Name, First Name, Last Name, Email, Status, Badge, Token
 <% @event.attendees.each do |attendee| %>
-<%= "#{attendee.first_name} #{attendee.last_name}, #{attendee.first_name},#{attendee.last_name}, #{attendee.email}, #{attendee.status_types[attendee.status]}, #{attendee.badge_types[attendee.badge]}" %>
+<%= "#{attendee.first_name} #{attendee.last_name}, #{attendee.first_name},#{attendee.last_name}, #{attendee.email}, #{attendee.status_types[attendee.status]}, #{attendee.badge_types[attendee.badge]},  #{attendee.oneclick.token}" %>
 <% end %>
