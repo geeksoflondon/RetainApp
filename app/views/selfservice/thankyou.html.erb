@@ -1,11 +1,10 @@
 <h2>Thankyou!!</h2>
 
 <% if @attendee.status == 'confirmed' %>
-	<p>Your attendance is now <%= @attendee.status %> and feel free to come back to update your details if anything changes!</p>
-	<p>We have also despatched robot ninjas to start building your public profile from twitter, lanyrd, and gravatar and we will notify you when is ready.</p>
+	<p>Your attendance is now confirmed and we look forward to seeing you on the weekend!</p>
 <% end %>
 
 <% if @attendee.status == 'cancelled' %>
-	<p>Your attendance is now <%= @attendee.status %>!</p>
-	<p>We hope to see you at a future Geeks of London event</p>
+	<p>Your attendance is now cancelled!</p>
+	<p>We hope to see you at a future event</p>
 <% end %>
