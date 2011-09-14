@@ -20,7 +20,7 @@ gem 'fog'
 gem  'rmagick'
 
 #auth
-gem 'omniauth', '>= 0.2.6'
+gem 'omniauth', '0.3.0.rc3'
 
 #pdf stuff
 gem 'prawn_rails'
