@@ -8,9 +8,9 @@ prawn_document(:page_size => "A5", :page_layout => :landscape, :margin => 0) do 
 	     pdf.text attendee.first_name.downcase, :style => :bold
 	     pdf.text attendee.last_name.downcase, :style => :bold
 	   end
-	   if attendee.twitter
+	   if !attendee.twitter.nil?
 	     pdf.font("Helvetica", :size => 16) do
-	       pdf.text "@#{attendee.twitter}"
+	       pdf.text "@#{attendee.twitter.downcase}" unless attendee.twitter.empty?
 	     end
 	   end
 	 end
@@ -27,9 +27,9 @@ prawn_document(:page_size => "A5", :page_layout => :landscape, :margin => 0) do 
 	     pdf.text attendee.first_name.downcase, :style => :bold
 	     pdf.text attendee.last_name.downcase, :style => :bold
 	    end
-	    if attendee.twitter
+	   if !attendee.twitter.nil?
 	      pdf.font("Helvetica", :size => 16) do
-	        pdf.text "@#{attendee.twitter}"
+	        pdf.text "@#{attendee.twitter.downcase}"
 	      end
 	    end
 	 end
@@ -39,7 +39,7 @@ prawn_document(:page_size => "A5", :page_layout => :landscape, :margin => 0) do 
 	 end
 	end
 
-	pdf.start_new_page unless attendee == @attendees.last
+	pdf.start_new_page unless @attendee == @attendees.last
 
   end
 
