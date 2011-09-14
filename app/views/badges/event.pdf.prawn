@@ -29,7 +29,7 @@ prawn_document(:page_size => "A5", :page_layout => :landscape, :margin => 0) do 
 	    end
 	   if !attendee.twitter.nil?
 	      pdf.font("Helvetica", :size => 16) do
-	        pdf.text "@#{attendee.twitter.downcase}"
+	        pdf.text "@#{attendee.twitter.downcase}" unless attendee.twitter.empty?
 	      end
 	    end
 	 end
