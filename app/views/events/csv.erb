@@ -1,4 +1,4 @@
-ID, Name, First Name, Last Name, Email, Phone Number, Status, Badge
+ID, Name, First Name, Last Name, Email, Phone Number, Status, Badge, Token
 <% @attendees.each do |attendee| %>
-<%= "#{attendee.id},#{attendee.first_name} #{attendee.last_name}, #{attendee.first_name},#{attendee.last_name},#{attendee.email},#{attendee.phone_number} #{attendee.status_types[attendee.status]},#{attendee.badge_types[attendee.badge]}" %>
+<%= "#{attendee.id},#{attendee.first_name} #{attendee.last_name}, #{attendee.first_name},#{attendee.last_name},#{attendee.email},#{attendee.phone_number} #{attendee.status_types[attendee.status]},#{attendee.badge_types[attendee.badge]},#{attendee.oneclick.token}" %>
 <% end %>
