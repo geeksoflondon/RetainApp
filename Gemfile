@@ -22,6 +22,10 @@ gem  'rmagick'
 #auth
 gem 'omniauth', '>= 0.2.6'
 
+#pdf stuff
+gem 'prawn_rails'
+gem 'barby'
+
 group :development do 
   gem 'heroku'
   gem 'mysql'

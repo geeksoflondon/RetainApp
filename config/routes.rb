@@ -8,15 +8,19 @@ RetainApp::Application.routes.draw do
 
   resources :onsite
 
+  #badges
+  match 'badge/attendee/:id' => 'badges#individual'
+  match 'badge/event/:id' => 'badges#event'
+
   #self service
   match 'selfservice/' => 'selfservice#index'
   match 'selfservice/hello' => 'selfservice#hello'
-  match 'selfservice/coming' => 'selfservice#coming';
-  match 'selfservice/notcoming' => 'selfservice#notcoming';
-  match 'selfservice/cancel' => 'selfservice#cancel';
-  match 'selfservice/badge' => 'selfservice#badge';
-  match 'selfservice/updatebadge' => 'selfservice#updatebadge';
-  match 'selfservice/thankyou' => 'selfservice#thankyou';
+  match 'selfservice/coming' => 'selfservice#coming'
+  match 'selfservice/notcoming' => 'selfservice#notcoming'
+  match 'selfservice/cancel' => 'selfservice#cancel'
+  match 'selfservice/badge' => 'selfservice#badge'
+  match 'selfservice/updatebadge' => 'selfservice#updatebadge'
+  match 'selfservice/thankyou' => 'selfservice#thankyou'
 
   #authentication
   match '/auth/twitter/setup', :to => 'authentications#setup'
