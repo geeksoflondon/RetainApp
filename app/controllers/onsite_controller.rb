@@ -43,4 +43,9 @@ class OnsiteController < ApplicationController
 
   end
 
+  def show
+    @event = Event.find(params[:id])
+    @checkins = Checkin.where('event_id = ?', params[:id])
+  end
+
 end

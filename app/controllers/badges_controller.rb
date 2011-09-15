@@ -9,12 +9,11 @@ class BadgesController < ApplicationController
 
   def individual
     @attendee = Attendee.find(params[:id])
-    @barcode = Barby::Code128.new("00000000", 'A')
+    @barcode = Barby::Code128.new(@attendee.id.to_s.rjust(8, '0'), 'A')
   end
 
   def event
     @event = Event.find(params[:id])
-    @barcode = Barby::Code128.new("00000000", 'A')
     @attendees = Attendee.where("event_id = ? AND status != 'cancelled'", @event.id)
   end
 

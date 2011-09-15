@@ -1,0 +1,25 @@
+<div class="in author"> 
+	<h2>
+		<%= @event.name %> Onsite
+		<span class="header_nav"><%= link_to 'Edit', edit_event_path(@event) %></span>
+	</h2>
+	
+</div>
+
+<hr>
+<div class="in">
+<table width="850" border="0" cellspacing="0" cellpadding="10" class="table_main" > 
+	<tr style="background-color:#d9d8d8; font-size:14px;"> 
+		<td width="350"><strong>Name</strong></td> 
+		<td width="250"><strong>Badge</strong></td>
+		<td width="250"><strong>Status</strong></td> 
+	</tr>
+	<% @checkins.each do |checkin| %>
+	<tr class="<%= cycle("gray", "white") %>"> 
+		<td><%= link_to "#{checkin.attendee.first_name} #{checkin.attendee.last_name}", edit_attendee_path(checkin.attendee) %></td> 
+		<td><%= checkin.attendee.badge_types[checkin.attendee.badge] %></td> 
+		<td><%= "On-Site" unless checkin.onsite == false  %> <%= "Off-Site" unless checkin.onsite == true  %></td> 
+	</tr> 
+	<% end %>
+</table>
+</div>

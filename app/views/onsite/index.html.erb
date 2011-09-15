@@ -10,6 +10,8 @@
 	<hr><br>
 	<h2>The Stats</h2>
 	<%= render "shared/event_overview" %>
+	
+	<h2><%=link_to("Who's here", "/onsite/#{@event.id}") %></h2>
 
 <% end %>
 </div>

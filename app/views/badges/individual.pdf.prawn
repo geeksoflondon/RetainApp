@@ -2,12 +2,12 @@ prawn_document(:page_size => "A5", :page_layout => :landscape, :margin => 0) do 
 	pdf.bounding_box [0.mm, 148.mm], :width => 105.mm, :height => 148.mm do
 	 pdf.bounding_box [5.mm, 105.mm], :width => 105.mm, :height => 220.mm do
 	   pdf.font("Helvetica", :size => 36) do
-	     pdf.text @attendee.first_name, :style => :bold
-	     pdf.text @attendee.last_name, :style => :bold
+	     pdf.text @attendee.first_name.downcase, :style => :bold
+	     pdf.text @attendee.last_name.downcase, :style => :bold
 	   end
 	   if !@attendee.twitter.nil?
 	     pdf.font("Helvetica", :size => 16) do
-	       pdf.text "@#{@attendee.twitter}"
+	       pdf.text "@#{@attendee.twitter}" unless attendee.twitter.empty?
 	     end
 	   end
 	 end
@@ -21,12 +21,12 @@ prawn_document(:page_size => "A5", :page_layout => :landscape, :margin => 0) do 
 	pdf.bounding_box [105.mm, 148.mm], :width => 105.mm, :height => 148.mm do
 	 pdf.bounding_box [5.mm, 105.mm], :width => 105.mm, :height => 220.mm do
 	   pdf.font("Helvetica", :size => 36) do
-	      pdf.text @attendee.first_name, :style => :bold
-	      pdf.text @attendee.last_name, :style => :bold
+	      pdf.text @attendee.first_name.downcase, :style => :bold
+	      pdf.text @attendee.last_name.downcase, :style => :bold
 	    end
 	    if !@attendee.twitter.nil?
 	      pdf.font("Helvetica", :size => 16) do
-	        pdf.text "@#{@attendee.twitter}"
+	        pdf.text "@#{@attendee.twitter.downcase}" unless attendee.twitter.empty?
 	      end
 	    end
 	 end

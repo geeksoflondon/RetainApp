@@ -1,10 +1,10 @@
 <div class="in dashboard_table">
     <table width="850" border="0" cellspacing="0" cellpadding="10" class="table_main">
       <tbody><tr style="background-color:#d9d8d8; font-size:14px;">
-        <td width="120" style="text-align: center;"><strong>Sign Ups</strong></td>
-        <td width="120" style="text-align: center;"><strong>Confirmed</strong></td>
-        <td width="120" style="text-align: center;"><strong>Unconfirmed</strong></td>
-        <td width="120" style="text-align: center;"><strong>Cancellations</strong></td>
+        <td width="120" style="text-align: center;"><strong><%= link_to('Sign Ups', events_path+"/#{@event.id}") %></strong></td>
+        <td width="120" style="text-align: center;"><strong><%= link_to('Confirmed', events_path+"/#{@event.id}/confirmed") %></strong></td>
+        <td width="120" style="text-align: center;"><strong><%= link_to('Unconfirmed', events_path+"/#{@event.id}/unconfirmed") %></strong></td>
+        <td width="120" style="text-align: center;"><strong><%= link_to('Cancelled', events_path+"/#{@event.id}/cancelled") %></strong></td>
         <td width="120" style="text-align: center;"><strong>Est. Attending</strong></td>
         <td width="120" style="text-align: center;"><strong>Show</strong></td>
         <td width="120" style="text-align: center;"><strong>No Show</strong></td>

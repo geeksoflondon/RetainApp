@@ -1,5 +1,5 @@
 class Checkin < ActiveRecord::Base
-  belongs_to :attendees
+  belongs_to :attendee
   validates_presence_of :attendee_id
 
   after_initialize :init
