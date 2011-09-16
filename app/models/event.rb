@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.now
-    Event.where('start < ?', Time.now).find(:first)
+    Event.find(1)
   end
 
   def english_date
