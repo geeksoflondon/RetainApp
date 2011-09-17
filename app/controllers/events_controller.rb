@@ -61,4 +61,21 @@ class EventsController < ApplicationController
     redirect_to events_url
   end
 
+  def onenight
+    
+    @attendees = Array.new
+    
+    offsite = Checkin.where('onsite = ?', false)
+    offsite.each do |checkin|
+      if checkin.attendee.status == 'attended'
+        @attendees << checkin.attendee
+      end
+    end
+    
+    respond_to do |format|
+      format.csv { render :template => 'events/csv' }
+    end
+    
+  end
+
 end
