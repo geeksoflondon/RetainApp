@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110904224810) do
+ActiveRecord::Schema.define(:version => 20110917055157) do
 
   create_table "attendee_profile", :force => true do |t|
     t.string   "profile_image_url"
