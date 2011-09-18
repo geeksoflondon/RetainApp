@@ -32,5 +32,12 @@ class Checkin < ActiveRecord::Base
       return 'Checked Out'
     end
   end
+  
+  def reset
+    Checkin.all.each do |checkin|
+      checkin.onsite = false
+      checkin.save
+    end
+  end
 
 end
