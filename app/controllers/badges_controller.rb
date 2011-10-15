@@ -14,7 +14,8 @@ class BadgesController < ApplicationController
 
   def event
     @event = Event.find(params[:id])
-    @attendees = Attendee.where("event_id = ? AND status != 'cancelled'", @event.id)
+    @attendees = Attendee.where("event_id = ? AND status != 'cancelled' AND badge != 'crew'", @event.id)
+    @crew = Attendee.where("event_id = ? AND status != 'cancelled' AND badge = 'crew'", @event.id)
   end
 
 end
