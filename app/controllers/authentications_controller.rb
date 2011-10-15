@@ -22,9 +22,6 @@ class AuthenticationsController < ApplicationController
     unless @onetime
       redirect_to root_url, :notice => "Sorry that was an invalid token"
     else
-      #Lockout and kill the token from future use
-      @onetime.lockout
-
       auth = {'provider' => 'oneclick', 'uid' => "#{@onetime.attendee_id}", 'nickname' => @onetime.nickname}
       current_user = User.find_or_create_by_omniauth(auth)
       cookies.permanent[:auth_token] = current_user.auth_token unless current_user.nil?
