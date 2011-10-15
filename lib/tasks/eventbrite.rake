@@ -38,7 +38,7 @@ namespace :eventbrite do
 
       clean_attendees.each do |row|
         attendee = {}
-        attendee = Attendee.where('ticket_id' => row["ticket_id"], 'event_id' => @event.id, )
+        attendee = Attendee.where('ticket_id' => row["ticket_id"], 'event_id' => @event.id)
         unless attendee.exists?
           row["event_id"] = @event.id
           imported_attendee = Attendee.new(row)
@@ -121,7 +121,7 @@ end
 
 def sort_badge(badge_name)
   unless BADGE_TYPES.has_value?(badge_name)
-    return 'Attendee'
+    return 'attendee'
   end
 
   return badge_name
