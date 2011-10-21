@@ -5,7 +5,7 @@ BADGE_TYPES = {
   'attendee' => 'Attendee',
   'crew' => 'Crew',
   'sponsor' => 'Sponsor',
-  'venue_staff' => 'Venue Staff'
+  'venue_staff' => 'Venue Staff',
   'vip' => 'VIP'
 }.freeze
 
