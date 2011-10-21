@@ -6,6 +6,7 @@ BADGE_TYPES = {
   'crew' => 'Crew',
   'sponsor' => 'Sponsor',
   'venue_staff' => 'Venue Staff'
+  'vip' => 'VIP'
 }.freeze
 
 USER_KEY = ENV['EVENTBRITE_USERKEY']
@@ -46,7 +47,7 @@ namespace :eventbrite do
           puts "#{row['first_name']} #{row['last_name']} was created"
         else
           attendee = Attendee.find(attendee.first['id'])
-          unless attendee.status == 'confirmed'
+          unless attendee.status != 'unconfirmed'
             attendee.update_attributes!(row)
             puts "#{row['first_name']} #{row['last_name']} was updated"
           else
