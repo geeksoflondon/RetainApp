@@ -12,7 +12,8 @@ class Attendee < ActiveRecord::Base
     'attendee' => 'Attendee',
     'crew' => 'Crew',
     'sponsor' => 'Sponsor',
-    'venue_staff' => 'Venue Staff'
+    'venue_staff' => 'Venue Staff',
+    'vip' => 'VIP'
   }.freeze
 
   VALID_DIETS = {
