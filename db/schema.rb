@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111022174133) do
+ActiveRecord::Schema.define(:version => 20111022202130) do
 
   create_table "attendee_profile", :force => true do |t|
     t.string   "profile_image_url"
@@ -91,6 +91,14 @@ ActiveRecord::Schema.define(:version => 20111022174133) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "trackings", :force => true do |t|
+    t.integer  "attendee_id"
+    t.integer  "event_id"
+    t.string   "action"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

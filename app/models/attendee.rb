@@ -43,6 +43,7 @@ class Attendee < ActiveRecord::Base
   belongs_to :event
   has_one :oneclick, :dependent => :destroy
   has_one :checkin, :dependent => :destroy
+  has_many :tracking, :dependent => :destroy
 
   #At Events
   after_initialize :init
