@@ -64,18 +64,18 @@ class Event < ActiveRecord::Base
   end
   
   def attended_conf
-    Attendee.joins(:checkin).where('status = ? && attended = ?', 'confirmed', true).count
+    Attendee.joins(:checkin).where('status = ? AND attended = ?', 'confirmed', true).count
   end
 
   def attended_unconf
-    Attendee.joins(:checkin).where('status = ? && attended = ?', 'unconfirmed', true).count
+    Attendee.joins(:checkin).where('status = ? AND attended = ?', 'unconfirmed', true).count
   end
   
   def noshow_conf
-    Attendee.joins(:checkin).where('status = ? && attended = ?', 'confirmed', false).count
+    Attendee.joins(:checkin).where('status = ? AND attended = ?', 'confirmed', false).count
   end
   
   def noshow_unconf
-    Attendee.joins(:checkin).where('status = ? && attended = ?', 'unconfirmed', false).count
+    Attendee.joins(:checkin).where('status = ? AND attended = ?', 'unconfirmed', false).count
   end
 end
