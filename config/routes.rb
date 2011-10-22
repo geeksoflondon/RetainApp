@@ -5,7 +5,7 @@ RetainApp::Application.routes.draw do
 
   resources :events
   match 'onenight' => 'events#onenight'
-  match 'events/:id/:filter' => 'events#show'
+  match 'events/:id/:filter_type/:filter' => 'events#show'
 
   resources :onsite
 

@@ -9,8 +9,8 @@
 
 <hr>
 <div class="in">
-	<p><b>Filter By:</b> <%= render 'shared/filter' %> </p>
-	<p><b>Show:</b> <%=link_to('Badges', "/badge/event/#{@event.id}.pdf") %> </p>
+	<%= render 'shared/filter' %>
+	<p><b>Show:</b> <%=link_to('Badges.pdf', "/badge/event/#{@event.id}.pdf") %> </p>
 	<p><b><%=link_to('Add Attendee', new_attendee_path) %></b></p>
 	
 	<table width="850" border="0" cellspacing="0" cellpadding="10" class="table_main" > 
@@ -29,6 +29,8 @@
 		</tr> 
 		<% end %>
 	</table>
+	
+	
 </div>
 <!-- <div class="in">
 	<%= form_tag '/attendees/bulkimport', :multipart => true do %>

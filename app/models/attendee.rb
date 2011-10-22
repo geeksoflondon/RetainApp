@@ -100,7 +100,11 @@ class Attendee < ActiveRecord::Base
   def badge_types
     @badge_types = VALID_BADGES
   end
-
+  
+  def self.badge_types
+    @badge_types = VALID_BADGES
+  end
+  
   def diet_types
     @diet_types = VALID_DIETS
   end

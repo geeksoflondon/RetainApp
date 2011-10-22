@@ -65,5 +65,9 @@ class Event < ActiveRecord::Base
       return Attendee.where('event_id = ? AND status NOT LIKE ?', self.id, 'attended').count
     end
   end
+  
+  # def attendee 
+  #   Attendee.where('event_id = ? AND badge LIKE ?', self.id, 'attendee').count
+  # end
 
 end

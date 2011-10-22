@@ -14,7 +14,11 @@ class EventsController < ApplicationController
     unless params[:filter]
       @attendees = Attendee.where('event_id' => params[:id])
     else
-      @attendees = Attendee.where('event_id' => params[:id], 'status' => params[:filter])
+      if params[:filter_type] == 'status_type'
+        @attendees = Attendee.where('event_id' => params[:id], 'status' => params[:filter])
+      elsif params[:filter_type] == 'badge_type'
+        @attendees = Attendee.where('event_id' => params[:id], 'badge' => params[:filter])
+      end
     end
 
     respond_to do |format|

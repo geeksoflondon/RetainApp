@@ -1,4 +1,12 @@
-| <%= link_to('All', events_path+"/#{@event.id}") + " |" %> | 
+<p><b><%= link_to('Show All', events_path+"/#{@event.id}")%></b> </p>
+<p><b>Filter By Status:</b> 
 <% Attendee.status_types.each do |k,v| %>
-<%= link_to(v, events_path+"/#{@event.id}/#{k}") + " |" %>
+<%= link_to(v, events_path+"/#{@event.id}/status_type/#{k}") + " |" %>
 <% end %>
+</p>	
+
+<p><b>Filter By Badge Type:</b> 
+<% Attendee.badge_types.each do |k,v| %>
+<%= link_to(v, events_path+"/#{@event.id}/badge_type/#{k}") + " |" %>
+<% end %>
+</p>
