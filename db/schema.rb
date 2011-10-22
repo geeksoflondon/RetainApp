@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110917055157) do
+ActiveRecord::Schema.define(:version => 20111022151512) do
 
   create_table "attendee_profile", :force => true do |t|
     t.string   "profile_image_url"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20110917055157) do
     t.boolean  "onsite"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "attended"
   end
 
   create_table "events", :force => true do |t|

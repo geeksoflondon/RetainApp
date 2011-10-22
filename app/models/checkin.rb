@@ -14,6 +14,11 @@ class Checkin < ActiveRecord::Base
     else
       self.onsite = false
     end
+    
+    if self.attended != true
+      self.attended = true
+    end
+    
     self.save
   end
 

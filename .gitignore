@@ -24,3 +24,4 @@ rerun.txt
 pickle-email-*.html
 .project
 heroku.yml
+.DS_Store

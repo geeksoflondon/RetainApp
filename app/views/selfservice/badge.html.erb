@@ -8,7 +8,7 @@
 	</div>								
 	<h4 class="<%= @attendee.badge %>"><%= @attendee.badge %></h4>
 	<div class="sub_banner">
-	<%= image_tag("qr_code.jpg", :class => "qr") %>
+	
 	</div>				
 </div>
 <div class="your_details">
@@ -22,31 +22,31 @@
 		
 		<p>
 			<label for="first_name">First Name</label>
-			<%= text_field(:attendee, :first_name, :size => 20, :maxlength => 12) %>
+			<%= text_field(:attendee, :first_name, :size => 20, :maxlength => 20) %>
 		</p>
 		
 		<p>
 			<label for="last_name">Last Name</label>
-			<%= text_field(:attendee, :last_name, :size => 20, :maxlength => 12) %>
+			<%= text_field(:attendee, :last_name, :size => 20, :maxlength => 20) %>
 		</p>
 
 		<p>
 			<label for="twitter">Twitter ID</label>
-			<%= text_field(:attendee, :twitter, :size => 20, :maxlength => 12) %>
+			<%= text_field(:attendee, :twitter, :size => 20, :maxlength => 20) %>
 		</p>
 
 		<p>
 			<label for="diet">Diet</label>
 			<%= select("attendee", :diet, options_from_collection_for_select(@attendee.diet_types.sort, :first, :last, @attendee['diet'])) %>
 		</p>
-		<p>
+		<!--<p>
 			<label for="t_shirt">T-Shirt Size</label>
 			<%= select("attendee", :t_shirt, options_from_collection_for_select(@attendee.tshirt_types.sort, :first, :last, @attendee['t_shirt'])) %>
 		</p>
 		<p>
 			<label for="public_profile">Public Profile</label>
 			<%= select("attendee", :public_profile, options_from_collection_for_select(@attendee.profile_types.sort, :first, :last, @attendee['public_profile'])) %>
-		</p>
+		</p>-->
 		<p>
 			<input type="submit" value="Save My Details">
 		</p>

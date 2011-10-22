@@ -118,7 +118,6 @@ class Attendee < ActiveRecord::Base
 
   def scanned!
     self.checkin.scan
-    self.status = 'attended'
     self.save
   end
 
@@ -158,7 +157,7 @@ class Attendee < ActiveRecord::Base
 
   def generate_checkin
     unless Checkin.find_by_attendee_id(self.id)
-      checkin = Checkin.new('attendee_id' => self.id)
+      checkin = Checkin.new('attendee_id' => self.id, 'event_id' => self.event_id)
       checkin.save
     end
   end
