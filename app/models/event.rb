@@ -60,7 +60,7 @@ class Event < ActiveRecord::Base
   end  
 
   def no_show
-    return Checkin.where('event_id = ? AND attended != ?', self.id, true).count
+    return (Checkin.where('event_id = ? AND attended = ?', self.id, false).count - self.cancelled)
   end
   
   def attended_conf
@@ -72,10 +72,10 @@ class Event < ActiveRecord::Base
   end
   
   def noshow_conf
-    Attendee.joins(:checkin).where('status = ? && attended != ?', 'confirmed', true).count
+    Attendee.joins(:checkin).where('status = ? && attended = ?', 'confirmed', false).count
   end
   
   def noshow_unconf
-    Attendee.joins(:checkin).where('status = ? && attended != ?', 'unconfirmed', true).count
+    Attendee.joins(:checkin).where('status = ? && attended = ?', 'unconfirmed', false).count
   end
 end
