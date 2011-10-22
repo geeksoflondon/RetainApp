@@ -1,22 +1,47 @@
+<div class="in dashboard_table_small">
+    <table width="410" border="0" cellspacing="0" cellpadding="10" class="table_main table_small table_left" >
+      <tbody><tr style="background-color:#d9d8d8; font-size:14px;">
+        <td width="120" style="text-align: center;"><strong>Shows</strong></td>
+		<td width="120" style="text-align: center;"><strong>No Shows</strong></td>
+      </tr>
+      <tr class="gray">
+        <td style="text-align: center;"><%= @event.attended %> (130+40) </td>
+        <td style="text-align: center;"><%= @event.no_show %> (20+60) </td>
+      </tr>
+    </tbody></table>    
+
+    <table width="410" border="0" cellspacing="0" cellpadding="10" class="table_main table_small">
+      <tbody><tr style="background-color:#d9d8d8; font-size:14px;">
+        <td width="120" style="text-align: center;"><strong>Onsite</strong></td>
+		<td width="120" style="text-align: center;"><strong>Offsite</strong></td>
+      </tr>
+      <tr class="gray">
+        <td style="text-align: center;"><%= @event.attended %></td>
+        <td style="text-align: center;"><%= @event.no_show %></td>
+      </tr>
+    </tbody></table>    
+</div>
+
 <div class="in dashboard_table">
     <table width="850" border="0" cellspacing="0" cellpadding="10" class="table_main">
       <tbody><tr style="background-color:#d9d8d8; font-size:14px;">
         <td width="120" style="text-align: center;"><strong><%= link_to('Sign Ups', events_path+"/#{@event.id}") %></strong></td>
-        <td width="120" style="text-align: center;"><strong><%= link_to('Confirmed', events_path+"/#{@event.id}/confirmed") %></strong></td>
-        <td width="120" style="text-align: center;"><strong><%= link_to('Unconfirmed', events_path+"/#{@event.id}/unconfirmed") %></strong></td>
-        <td width="120" style="text-align: center;"><strong><%= link_to('Cancelled', events_path+"/#{@event.id}/cancelled") %></strong></td>
-        <td width="120" style="text-align: center;"><strong>Est. Attending</strong></td>
+        <td width="120" style="text-align: center;"><strong><%= link_to('Confirmed', events_path+"/#{@event.id}/status_type/confirmed") %></strong></td>
+        <td width="120" style="text-align: center;"><strong><%= link_to('Unconfirmed', events_path+"/#{@event.id}/status_type/unconfirmed") %></strong></td>
+        <td width="120" style="text-align: center;"><strong><%= link_to('Cancelled', events_path+"/#{@event.id}/status_type/cancelled") %></strong></td>
+        <!-- <td width="120" style="text-align: center;"><strong>Est. Attending</strong></td>
         <td width="120" style="text-align: center;"><strong>Show</strong></td>
-        <td width="120" style="text-align: center;"><strong>No Show</strong></td>
+        <td width="120" style="text-align: center;"><strong>No Show</strong></td> -->
       </tr>
       <tr class="gray">
         <td style="text-align: center;"><%= @event.signups %></td>
         <td style="text-align: center;"><%= @event.confirmed %></td>
         <td style="text-align: center;"><%= @event.unconfirmed %></td>
         <td style="text-align: center;"><%= @event.cancelled %></td>
-        <td style="text-align: center;"><%= @event.attending %></td>
+        <!-- <td style="text-align: center;"><%= @event.attending %></td>
         <td style="text-align: center;"><%= @event.attended %></td>
-        <td style="text-align: center;"><%= @event.no_show %></td>
+        <td style="text-align: center;"><%= @event.no_show %></td> -->
       </tr>
     </tbody></table>    
 </div>
+

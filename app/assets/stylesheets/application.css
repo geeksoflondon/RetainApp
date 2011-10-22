@@ -118,6 +118,12 @@ td { padding: 12px; text-align:left; }
 
 .table_main { border-top: 1px solid #bab9b9; border-right: 1px solid #bab9b9; border-left: 1px solid #bab9b9; margin-top:20px;}
 
+.dashboard_table_small {margin-bottom: 20px; overflow: auto;}
+
+.table_small { float: left;}
+
+.table_left { margin-right:25px;}
+
 .table_main .delete {background:url(images/x2.gif) center left no-repeat; padding-left:12px;}
 
 .dashboard_table {margin-bottom: 40px;}
