@@ -4,10 +4,10 @@ RetainApp::Application.routes.draw do
   match 'attendees/bulkimport' => 'attendees#bulkimport', :via => [:post]
 
   resources :events
-  match 'onenight' => 'events#onenight'
   match 'events/:id/:filter_type/:filter' => 'events#show'
 
   resources :onsite
+  match 'onsite/attendee/:id' => 'onsite#attendee'
 
   match '/stats' => 'onsite#stats'
   

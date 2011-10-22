@@ -38,7 +38,7 @@ class OnsiteController < ApplicationController
     if attendee
       attendee.scanned!
       flash[:notice] = "#{attendee.first_name} #{attendee.last_name} has been #{attendee.checkin.action_flash}"
-      redirect_to onsite_index_path
+      redirect_to :action => "attendee", :id => attendee.id
     end
 
   end
@@ -46,6 +46,11 @@ class OnsiteController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @checkins = Checkin.where('event_id = ?', params[:id])
+  end
+  
+  def attendee
+    @attendee = Attendee.find(params[:id])
+    @event = Event.find(@attendee.event_id)
   end
 
   def stats

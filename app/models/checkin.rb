@@ -1,5 +1,6 @@
 class Checkin < ActiveRecord::Base
-  belongs_to :attendee
+  belongs_to :attendee;
+  
   validates_presence_of :attendee_id
 
   after_initialize :init
@@ -20,6 +21,8 @@ class Checkin < ActiveRecord::Base
     end
     
     self.save
+    
+    Tracking.create({'attendee_id' => self.attendee_id, 'event_id' => self.event_id, 'action' => self.action_flash})
   end
 
   def button
