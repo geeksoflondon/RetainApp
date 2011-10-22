@@ -132,6 +132,63 @@ td { padding: 12px; text-align:left; }
 
 tr td {border-bottom: 1px solid #bab9b9;}
 
+#viz {
+	overflow: auto;
+	margin-top: 20px;
+}
+
+#visualization { 	margin-left:10px; float: left;}
+#visualization2 { 	margin-left:10px;  float: left;}
+
+#viz3 {
+	margin-left: 40px;
+	float: left;
+	width: 400px;
+	background-color: gray;
+	color: gray;	
+}
+
+#row2 {
+	overflow: auto;
+}
+
+#row3 {
+	overflow: auto;
+}
+
+.shows {
+	background-color:blue;
+	color: blue;
+}
+
+.noshows {
+	background-color:red;
+	color: red;
+}
+
+.conf {
+	background-color:blue;
+	color:blue;
+}
+
+.unconf {
+	background-color:red;
+	color:red;
+}
+
+.conf2 {
+	background-color:orange;
+	color: orange;
+}
+
+.unconf2 {
+	background-color:green;
+	color:green;
+}
+
+.v3r2 {
+	float: left;
+}
 
 
 

@@ -1,0 +1,84 @@
+<h2>The Stats</h2>
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+   
+     // Load the Visualization API and the piechart package.
+     google.load('visualization', '1', {'packages':['corechart']});
+     
+     // Set a callback to run when the Google Visualization API is loaded.
+     google.setOnLoadCallback(drawVisualization);
+	google.setOnLoadCallback(drawVisualization2);
+
+	  	<% attended = @event.attended 
+			no_shows = @event.no_show
+			total = attended + no_shows
+			att_conf = @event.attended_conf
+			att_unconf = @event.attended_unconf
+			nos_conf = @event.noshow_conf
+			nos_unconf = @event.noshow_unconf
+		%>
+		
+	function drawVisualization() {
+		
+	      // Create the data table.
+	      var data = new google.visualization.DataTable();
+	      data.addColumn('string', 'Attendees');
+	      data.addColumn('number', 'Number');
+	      data.addRows([
+	        ['Shows', <%= attended %>],
+	        ['No Shows', <%= no_shows %>]
+	      ]);
+	
+	      // Instantiate and draw our chart, passing in some options.
+	      var chart = new google.visualization.PieChart(document.getElementById('visualization'));
+	      chart.draw(data, {
+				legend: 'none', width: 200, height: 200, 
+				chartArea:{height:"100%", width:"100%"}
+			});
+	}
+	
+	function drawVisualization2() {
+		var data = new google.visualization.DataTable();
+	   data.addColumn('string', 'Attendees');
+	   data.addColumn('number', 'Number');
+	   data.addRows([
+	     ['Shows - Confirmed', <%= att_conf %>],
+		  ['Shows - Confirmed', <%= att_unconf %>],
+	     ['No Shows', <%= nos_conf %>],
+	     ['No Shows', <%= nos_unconf %>]
+	   ]);
+	
+		// Instantiate and draw our chart, passing in some options.
+      var chart2 = new google.visualization.PieChart(document.getElementById('visualization2'));
+      chart2.draw(data, {
+			legend: 'none', width: 200, height: 200, 
+			chartArea:{height:"100%", width:"100%"}
+		});
+	}
+	
+</script>
+<div id="viz">
+	<div id="visualization"></div>
+	<div id="visualization2"></div>
+	
+	<div id="viz3">
+		<div>Signups</div>
+		<div id="row2">
+			<% percent = ((attended*400)/total).round%>
+			<div class="v3r2 shows" style="width:<%= percent %>px;">S</div>
+			<div class="v3r2 noshows" style= "width:<%= 400-percent %>px;">N</div>
+		</div>
+		<div id="row3">
+			<% percent2 = ((att_conf*400)/total).round %>
+			<% puts percent3 = ((att_unconf*400)/total).round %>
+			<% percent4 = ((nos_conf*400)/total).round %>
+			<div class="v3r2 conf" style="width:<%= percent2 %>px;">C</div>
+			<div class="v3r2 unconf" style="width:<%= percent3 %>px;">U</div>
+			<div class="v3r2 conf2" style="width:<%= percent4 %>px;">C</div>
+			<div class="v3r2 unconf2" style="width:<%= 400-percent2-percent3-percent4 %>px;">U</div>
+		</div>
+	</div>
+</div>
+<%= render "shared/event_overview" %>

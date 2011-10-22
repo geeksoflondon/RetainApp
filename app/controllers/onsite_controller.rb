@@ -48,4 +48,8 @@ class OnsiteController < ApplicationController
     @checkins = Checkin.where('event_id = ?', params[:id])
   end
 
+  def stats
+    @event = Event.now
+    @checkins = Checkin.where('event_id = ?', params[:id])
+  end
 end

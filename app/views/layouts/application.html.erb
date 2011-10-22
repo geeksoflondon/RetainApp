@@ -24,6 +24,7 @@
               <li><%= link_to 'HOME', root_path %></li> 
               <li><%= link_to 'EVENTS', events_path() unless !admin? %></li> 
               <li><%= link_to 'ON-SITE', onsite_index_path() unless !admin? %><li> 
+				  <li><%= link_to 'STATS', "/stats" unless !admin? %><li> 
               <li><a href="#">KIOSK</a></li> 
           </ul> 
         </div>
@@ -41,6 +42,8 @@
         <p class="footer">All information in this app is considered privileged and should not be shared.</p>
 
     </div>
+
+
 
 </body>
 </html>

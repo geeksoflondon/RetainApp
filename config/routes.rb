@@ -9,6 +9,8 @@ RetainApp::Application.routes.draw do
 
   resources :onsite
 
+  match '/stats' => 'onsite#stats'
+  
   #badges
   match 'badge/attendee/:id' => 'badges#individual'
   match 'badge/event/:id' => 'badges#event'
