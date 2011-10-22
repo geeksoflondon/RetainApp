@@ -73,6 +73,11 @@
 		    <%= select("attendee", :status, options_from_collection_for_select(@attendee.status_types.sort, :first, :last, @attendee['status'])) %>
 		  </p>
 	  </div>
+	
+	  <p>
+	    <%= f.label :notes %><br />
+	    <%= f.text_area :notes, :class => "box" %>
+	  </p>	
 
 	  <div class="actions">
 	    <%= f.submit %>

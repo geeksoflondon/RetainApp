@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111022202130) do
+ActiveRecord::Schema.define(:version => 20111022214522) do
 
   create_table "attendee_profile", :force => true do |t|
     t.string   "profile_image_url"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20111022202130) do
     t.datetime "updated_at"
     t.string   "public_profile"
     t.string   "barcode"
+    t.text     "notes"
   end
 
   add_index "attendees", ["event_id"], :name => "index_attendees_on_event_id"
