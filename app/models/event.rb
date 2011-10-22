@@ -78,4 +78,12 @@ class Event < ActiveRecord::Base
   def noshow_unconf
     Attendee.joins(:checkin).where('status = ? AND attended = ?', 'unconfirmed', false).count
   end
+  
+  def onsite
+    Checkin.where('event_id = ? AND onsite = ?', self.id, true).count
+  end
+  
+  def offsite
+    return (self.attended - self.onsite)
+  end
 end
