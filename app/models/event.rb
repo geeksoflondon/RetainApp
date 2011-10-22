@@ -51,19 +51,31 @@ class Event < ActiveRecord::Base
   end
 
   def attended
+    return Checkin.where('event_id = ? AND attended = ?', self.id, true).count
     if Time.now.to_date < self.start
       return 'N/A'
     else
       return Checkin.where('event_id = ? AND attended = ?', self.id, true).count
     end
-  end
+  end  
 
   def no_show
-    if Time.now.to_date < self.start
-      return 'N/A'
-    else
-      return Checkin.where('event_id = ? AND attended != ?', self.id, true).count
-    end
+    return Checkin.where('event_id = ? AND attended != ?', self.id, true).count
+  end
+  
+  def attended_conf
+    Attendee.joins(:checkin).where('status = ? && attended = ?', 'confirmed', true).count
   end
 
+  def attended_unconf
+    Attendee.joins(:checkin).where('status = ? && attended = ?', 'unconfirmed', true).count
+  end
+  
+  def noshow_conf
+    Attendee.joins(:checkin).where('status = ? && attended != ?', 'confirmed', true).count
+  end
+  
+  def noshow_unconf
+    Attendee.joins(:checkin).where('status = ? && attended != ?', 'unconfirmed', true).count
+  end
 end

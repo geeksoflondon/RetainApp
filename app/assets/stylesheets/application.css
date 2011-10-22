@@ -114,6 +114,8 @@ a:hover{color:#f7941d;}
 
 td { padding: 12px; text-align:left; }
 
+.pb_bar { padding: 1px;}
+
 .gray td {background-color:#f7f7f7;}
 
 .table_main { border-top: 1px solid #bab9b9; border-right: 1px solid #bab9b9; border-left: 1px solid #bab9b9; margin-top:20px;}
