@@ -4,7 +4,6 @@ class Attendee < ActiveRecord::Base
   VALID_STATUS = { 
     'unconfirmed' => 'Unconfirmed',
     'confirmed' => 'Confirmed',
-    'attended' => 'Attended',
     'cancelled' => 'Cancelled'
   }.freeze
 

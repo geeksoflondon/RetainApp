@@ -36,7 +36,7 @@ class OnsiteController < ApplicationController
     end
 
     if attendee
-      attendee.scanned!
+      #attendee.scanned!
       flash[:notice] = "#{attendee.first_name} #{attendee.last_name} has been #{attendee.checkin.action_flash}"
       redirect_to onsite_index_path
     end
