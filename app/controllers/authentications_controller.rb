@@ -30,6 +30,24 @@ class AuthenticationsController < ApplicationController
     end
   end
 
+  def crew
+    @event = Event.current.last
+  end
+
+  def crew_auth
+    @crew = Attendee.find(params[:attendee]['id'].sub(/^[0]*/,""))
+    unless @crew.is_crew_today?
+      redirect_to root_url, :notice => "Sorry that was an invalid token"
+    else
+      auth = {'provider' => 'crew', 'uid' => "#{@crew.id}", 'nickname' => "#{@crew.first_name} #{@crew.last_name}"}
+      current_user = User.find_or_create_by_omniauth(auth)
+      current_user.update_attribute('is_admin', true)
+      cookies.permanent[:auth_token] = current_user.auth_token unless current_user.nil?
+      cookies.permanent[:crew] = true
+      redirect_to '/'
+    end
+  end
+
   def setup
     request.env['omniauth.strategy'].consumer_key = ENV['TWITTER_KEY']
     request.env['omniauth.strategy'].consumer_secret = ENV['TWITTER_SECRET']

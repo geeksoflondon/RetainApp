@@ -161,4 +161,17 @@ class Attendee < ActiveRecord::Base
     end
   end
 
+  def is_crew_today?
+    if self.badge != 'crew'
+      return false
+    else
+      event = Event.find(self.event_id)
+      if event == Event.current.last
+        return true
+      else
+        return false
+      end
+    end
+  end
+
 end
