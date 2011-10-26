@@ -62,8 +62,6 @@ class Attendee < ActiveRecord::Base
                     :length => {:minimum => 3, :maximum => 254},
                     :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
 
-  validates :ticket_id, :uniqueness => :ticket_id
-
   validates_inclusion_of :status, :in => VALID_STATUS,
       :message => "%{value} is not a valid status"
 
