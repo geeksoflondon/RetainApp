@@ -25,6 +25,10 @@ RetainApp::Application.routes.draw do
   match 'selfservice/updatebadge' => 'selfservice#updatebadge'
   match 'selfservice/thankyou' => 'selfservice#thankyou'
 
+  #qjump
+  match 'qjump/:token' => 'qjump#index'
+  match 'qjump/barcode/:token' => 'qjump#barcode'
+
   #authentication
   match '/auth/twitter/setup', :to => 'authentications#setup'
   match '/auth/:provider/callback' => 'authentications#create'

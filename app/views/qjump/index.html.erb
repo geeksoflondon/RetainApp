@@ -1,0 +1,11 @@
+<h1 style="font-size:38pt; text-align:center;" ><%= @event.name %> qJump</h1>
+<h2 style="font-size:26pt; text-align:center;" ><%= @attendee.first_name %> <%= @attendee.last_name %></h2>
+
+<p>To pass through registration quicker, we'd recommend that you bring a print-out of this page along with you:</p>
+
+<table align="center" border="0" cellpadding="15" cellspacing="25">
+<tr><td>
+<p align="center" style="font-family:arial, sans-serif;color:#000000;" ><img src="/qjump/barcode/<%= @oneclick.token %>"/></p>
+</td></tr>
+</table>
+
