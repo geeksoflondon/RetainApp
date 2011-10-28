@@ -6,6 +6,14 @@ class StatsController < ActionController::Base
 		render :layout => false, :content_type => 'application/xml'
 	end
 	
+	def attended
+  	render :layout => false, :content_type => 'application/xml'
+	end
+
+	def noshows
+	  render :layout => false, :content_type => 'application/xml'
+  end
+	
 	def load_event
 	  @event = Event.now
     @checkins = Checkin.where('event_id = ?', params[:id])
