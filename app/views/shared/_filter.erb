@@ -11,3 +11,13 @@
 <%= link_to(v, events_path+"/#{@event.id}/status_type/#{k}") + " | " %>
 <% end %>
 </p>	
+
+<p><b>Filter By Attendance:</b> 
+<%= link_to('Shows', events_path+"/#{@event.id}/attendance_type/shows") + " ( " %>
+<%= link_to('Confirmed', events_path+"/#{@event.id}/attendance_type/shows_conf") + " | " %>
+<%= link_to('Unconfirmed', events_path+"/#{@event.id}/attendance_type/shows_unconf") + " ) | " %>
+<%= link_to('No Shows', events_path+"/#{@event.id}/attendance_type/noshows") + " (" %>
+<%= link_to('Confirmed', events_path+"/#{@event.id}/attendance_type/noshows_conf") + " | " %>
+<%= link_to('Unconfirmed', events_path+"/#{@event.id}/attendance_type/noshows_unconf") + " )" %>
+
+</p>

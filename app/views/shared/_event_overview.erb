@@ -7,8 +7,8 @@
 		<td width="120" style="text-align: center;"><strong>No Shows</strong></td>
       </tr>
       <tr class="gray">
-        <td style="text-align: center;"><%= @event.attended %> (<%=@event.attended_conf%>+<%=@event.attended_unconf%>) </td>
-        <td style="text-align: center;"><%= @event.no_show %> (<%=@event.noshow_conf%>+<%=@event.noshow_unconf%>)  </td>
+        <td style="text-align: center;"><%= @event.attended %> (<%= link_to(@event.attended_conf, events_path+"/#{@event.id}/attendance_type/shows_conf")%> + <%= link_to(@event.attended_unconf, events_path+"/#{@event.id}/attendance_type/shows_conf")%>) </td>
+        <td style="text-align: center;"><%= @event.no_show %> (<%= link_to(@event.noshow_conf, events_path+"/#{@event.id}/attendance_type/noshows_conf")%>+<%= link_to(@event.noshow_unconf, events_path+"/#{@event.id}/attendance_type/noshows_conf")%>)  </td>
       </tr>
     </tbody></table>    
 

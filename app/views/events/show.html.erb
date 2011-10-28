@@ -18,6 +18,8 @@
 			<td width="200"><strong>Name</strong></td> 
 			<td width="150"><strong>Badge</strong></td>
 			<td width="150"><strong>Status</strong></td> 
+			<td width="150"><strong>Attendance</strong></td> 
+			<td width="150"><strong>Onsite</strong></td> 
 			<td width="75"></td> 
 		</tr>
 		<% @attendees.each do |attendee| %>
@@ -25,6 +27,8 @@
 			<td><%= link_to "#{attendee.first_name} #{attendee.last_name}", edit_attendee_path(attendee) %></td> 
 			<td><%= attendee.badge_types[attendee.badge] %></td> 
 			<td><%= attendee.status_types[attendee.status] %></td> 
+			<td><%= attendee.checkin.attended %></td> 
+			<td><%= attendee.checkin.onsite %></td> 
 			<td><%= link_to 'EDIT', edit_attendee_path(attendee) %></td> 
 		</tr> 
 		<% end %>

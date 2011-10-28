@@ -144,15 +144,9 @@ tr td {border-bottom: 1px solid #bab9b9;}
 	margin-left: 40px;
 	float: left;
 	width: 400px;
-	background-color: gray;
-	color: gray;	
 }
 
 #row2 {
-	overflow: auto;
-}
-
-#row3 {
 	overflow: auto;
 }
 
@@ -186,7 +180,19 @@ tr td {border-bottom: 1px solid #bab9b9;}
 	color:green;
 }
 
+.onsite {
+	background-color:#00CCFF;
+	color:#00CCFF;
+}
+
+.offsite {
+	background-color:#993399;
+	color:#993399;
+}
+
 .v3r2 {
+	margin-top: 10px;
+	height: 50px;
 	float: left;
 }
 

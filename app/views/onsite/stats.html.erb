@@ -18,6 +18,7 @@
 			att_unconf = @event.attended_unconf
 			nos_conf = @event.noshow_conf
 			nos_unconf = @event.noshow_unconf
+			onsite = @event.onsite
 		%>
 		
 	function drawVisualization() {
@@ -38,7 +39,7 @@
 				chartArea:{height:"100%", width:"100%"}
 			});
 	}
-	
+
 	function drawVisualization2() {
 		var data = new google.visualization.DataTable();
 	   data.addColumn('string', 'Attendees');
@@ -64,13 +65,12 @@
 	<div id="visualization2"></div>
 	
 	<div id="viz3">
-		<div>Signups</div>
 		<div id="row2">
 			<% percent = ((attended*400)/total).round%>
 			<div class="v3r2 shows" style="width:<%= percent %>px;">S</div>
 			<div class="v3r2 noshows" style= "width:<%= 400-percent %>px;">N</div>
 		</div>
-		<div id="row3">
+		<div id="row2">
 			<% percent2 = ((att_conf*400)/total).round %>
 			<% puts percent3 = ((att_unconf*400)/total).round %>
 			<% percent4 = ((nos_conf*400)/total).round %>
@@ -78,6 +78,11 @@
 			<div class="v3r2 unconf" style="width:<%= percent3 %>px;">U</div>
 			<div class="v3r2 conf2" style="width:<%= percent4 %>px;">C</div>
 			<div class="v3r2 unconf2" style="width:<%= 400-percent2-percent3-percent4 %>px;">U</div>
+		</div>
+		<div id="row2">
+			<% percent5 = ((onsite*400)/total).round %>
+			<div class="v3r2 onsite" style="width:<%= percent5 %>px;">C</div>
+			<div class="v3r2 offsite" style="width:<%= 400-percent5 %>px;">U</div>
 		</div>
 	</div>
 </div>
