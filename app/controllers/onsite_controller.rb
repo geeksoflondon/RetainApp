@@ -3,7 +3,7 @@ class OnsiteController < ApplicationController
   before_filter :require_admin
 
   def index
-    @event = Event.now
+    @event = Event.find(2)
   end
 
   def create

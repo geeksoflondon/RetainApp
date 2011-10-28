@@ -1,0 +1,12 @@
+<div class="in forms">
+<%=form_tag(auth_crew_path, :method => :post) do %>
+	<h2>Crew Sign In</h2>
+    <p>
+        <label for="onsite_search">Scan your badge</label><br/>
+        <%= text_field(:attendee, :id, :size => 100,  :class => "search_box", :style => "margin: 5px 0") %>
+		<input type="submit" value="GO!!" class="search_btn" style="margin: 0 0 0 5px; padding: 6px 30px;"><br/>
+		<label>You will need to be crew for: <%= @event.name %></label>
+    </p>
+
+<% end %>
+</div>

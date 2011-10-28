@@ -10,7 +10,7 @@ RetainApp::Application.routes.draw do
   match 'onsite/attendee/:id' => 'onsite#attendee'
 
   match '/stats' => 'onsite#stats'
-  
+
   #badges
   match 'badge/attendee/:id' => 'badges#individual'
   match 'badge/event/:id' => 'badges#event'
@@ -25,10 +25,16 @@ RetainApp::Application.routes.draw do
   match 'selfservice/updatebadge' => 'selfservice#updatebadge'
   match 'selfservice/thankyou' => 'selfservice#thankyou'
 
+  #qjump
+  match 'qjump/:token' => 'qjump#index'
+  match 'qjump/barcode/:token' => 'qjump#barcode'
+
   #authentication
   match '/auth/twitter/setup', :to => 'authentications#setup'
   match '/auth/:provider/callback' => 'authentications#create'
   match '/oneclick/:token' => 'authentications#oneclick'
+  match '/crew' => 'authentications#crew'
+  match '/auth/crew' => 'authentications#crew_auth'
   match '/auth/failure' => redirect("/")
   match '/login' => redirect('/auth/twitter'), :as => "login"
   match '/logout' => "authentications#destroy", :as => "logout"

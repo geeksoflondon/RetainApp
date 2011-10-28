@@ -62,8 +62,6 @@ class Attendee < ActiveRecord::Base
                     :length => {:minimum => 3, :maximum => 254},
                     :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
 
-  validates :ticket_id, :uniqueness => :ticket_id
-
   validates_inclusion_of :status, :in => VALID_STATUS,
       :message => "%{value} is not a valid status"
 
@@ -160,6 +158,19 @@ class Attendee < ActiveRecord::Base
     unless Checkin.find_by_attendee_id(self.id)
       checkin = Checkin.new('attendee_id' => self.id, 'event_id' => self.event_id)
       checkin.save
+    end
+  end
+
+  def is_crew_today?
+    if self.badge != 'crew'
+      return false
+    else
+      event = Event.find(self.event_id)
+      if event == Event.current.last
+        return true
+      else
+        return false
+      end
     end
   end
 
