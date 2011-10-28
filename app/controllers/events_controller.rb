@@ -31,7 +31,6 @@ class EventsController < ApplicationController
           @attendees = Attendee.where('event_id' => params[:id], 'status' => 'confirmed').select{|attendee| attendee.checkin.attended == false && attendee.status != 'cancelled' }
         elsif params[:filter] == 'noshows_unconf'  
           @attendees = Attendee.where('event_id' => params[:id], 'status' => 'unconfirmed').select{|attendee| attendee.checkin.attended == false && attendee.status != 'cancelled'}
-
         end
       end
     end
