@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<%= @last_five.each do |attendee| %>
+	<item>
+		<% if attendee.checkin.onsite == true %>
+		<text><%= @attendee.first_name %> <%= @attendee.last_name %> has checked in</text>
+		<% else %>
+		<text><%= @attendee.first_name %> <%= @attendee.last_name %> has checked out</text>
+		<% end %>
+		<type>0</type>
+	</item>
+	<%= end %>
+</root>

@@ -10,7 +10,8 @@ class StatsController < ActionController::Base
   	render :layout => false, :content_type => 'application/xml'
 	end
 
-	def noshows
+	def lastfive
+	  @last_five = Attendee.unscoped.joins(:checkin).where('checkins.event_id = ? AND attended = ?', @event.id, true).order("checkins.updated_at DESC").limit(10)
 	  render :layout => false, :content_type => 'application/xml'
   end
 	

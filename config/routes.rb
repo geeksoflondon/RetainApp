@@ -12,7 +12,6 @@ RetainApp::Application.routes.draw do
   match '/stats' => 'onsite#stats'
   match '/stats/gecko/onsite' => 'stats#onsite'
   match '/stats/gecko/attended' => 'stats#attended'
-  match '/stats/gecko/noshows' => 'stats#noshows'
   match '/stats/gecko/lastfive' => 'stats#lastfive'
 
   #badges
