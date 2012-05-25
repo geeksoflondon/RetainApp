@@ -16,7 +16,7 @@ namespace :eventbrite do
   desc "Make a user an admin"
   task :import_attendees => :environment do |t, args|
 
-    Event.where('start <= ?', Time.now + 14.days).find(:all).each do |event|
+    Event.where('start > ?', Time.now - 14.days).find(:all).each do |event|
 
     @event = event
     @event_id = @event.eventbrite_id.to_i
