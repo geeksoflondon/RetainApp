@@ -35,3 +35,9 @@ group :production do
   gem 'pg'
   gem 'therubyracer-heroku', '0.8.1.pre3'
 end
+
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'timecop'
+  gem 'database_cleaner'
+end
