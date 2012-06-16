@@ -38,6 +38,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'object-factory'
   gem 'timecop'
   gem 'database_cleaner'
 end

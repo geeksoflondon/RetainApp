@@ -127,6 +127,8 @@ GEM
     oauth2 (0.5.0)
       faraday (>= 0.6.1, < 0.8)
       multi_json (~> 1.0.0)
+    object-factory (0.2.4)
+      rujitsu
     omniauth (0.3.0.rc3)
       oa-basic (= 0.3.0.rc3)
       oa-core (= 0.3.0.rc3)
@@ -196,6 +198,7 @@ GEM
       ruby-openid (>= 2.1.7)
     rubyntlm (0.1.1)
     rubyzip (0.9.4)
+    rujitsu (0.3.3)
     sass (3.1.7)
     sass-rails (3.1.1)
       actionpack (~> 3.1.0)
@@ -239,6 +242,7 @@ DEPENDENCIES
   jquery-rails
   json
   mysql
+  object-factory
   omniauth (= 0.3.0.rc3)
   pg
   prawn_rails
