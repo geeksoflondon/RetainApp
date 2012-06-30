@@ -175,6 +175,7 @@ GEM
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rmagick (2.13.1)
+    rqrcode (0.4.2)
     ruby-hmac (0.4.0)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
@@ -227,6 +228,7 @@ DEPENDENCIES
   prawn_rails
   rails (= 3.1.0)
   rmagick
+  rqrcode
   sass-rails (~> 3.1.0)
   sqlite3-ruby
   therubyracer-heroku (= 0.8.1.pre3)

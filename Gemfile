@@ -25,6 +25,7 @@ gem 'omniauth', '0.3.0.rc3'
 #pdf stuff
 gem 'prawn_rails'
 gem 'barby'
+gem 'rqrcode'
 
 group :development do 
   gem 'heroku'
