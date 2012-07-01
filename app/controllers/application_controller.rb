@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :current_user, :logged_in?, :admin?, :redirect_one_click
-  helper_method :display_notice?, :current_user, :logged_in?, :admin?, :require_attendee
+  before_filter :current_user, :logged_in?, :redirect_one_click
+  helper_method :display_notice?, :current_user, :logged_in?, :require_attendee
 
   private
 
@@ -16,11 +16,6 @@ class ApplicationController < ActionController::Base
       cookies[:auth_token] = request.url unless request.xhr?
       redirect_to login_url
     end
-  end
-
-  def require_admin
-    require_login unless logged_in?
-    redirect_to root_url, :notice => "You need to be an admin to get access to this feature" unless admin? || !logged_in?
   end
 
   def require_attendee
@@ -42,10 +37,6 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     @logged_in = !@current_user.nil?
-  end
-
-  def admin?
-    @admin = logged_in? && @current_user.is_admin
   end
 
   def attendee?
