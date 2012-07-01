@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
 
-  before_create :generate_token(:auth_token)
+  before_create {generate_token(:auth_token)}
 
   def self.find_or_create_by_omniauth(auth)
     authentication = Authentication.find_or_create_by_provider_and_uid(auth["provider"], auth["uid"])
