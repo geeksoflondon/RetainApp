@@ -39,14 +39,14 @@
 			<label for="diet">Diet</label>
 			<%= select("attendee", :diet, options_from_collection_for_select(@attendee.diet_types.sort, :first, :last, @attendee['diet'])) %>
 		</p>
-		<!--<p>
+		<p>
 			<label for="t_shirt">T-Shirt Size</label>
 			<%= select("attendee", :t_shirt, options_from_collection_for_select(@attendee.tshirt_types.sort, :first, :last, @attendee['t_shirt'])) %>
 		</p>
 		<p>
 			<label for="public_profile">Public Profile</label>
 			<%= select("attendee", :public_profile, options_from_collection_for_select(@attendee.profile_types.sort, :first, :last, @attendee['public_profile'])) %>
-		</p>-->
+		</p>
 		<p>
 			<input type="submit" value="Save My Details">
 		</p>
