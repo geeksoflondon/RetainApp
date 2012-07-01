@@ -44,7 +44,7 @@ class SelfserviceController < ApplicationController
 
   def oneclick
     onetime = Oneclick.find_by_token(params[:token])
-    unless @onetime
+    unless onetime
       redirect_to root_url
     else
       cookies.permanent[:token] = onetime.token

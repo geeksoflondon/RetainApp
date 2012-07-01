@@ -1,6 +1,6 @@
 namespace :retain do
   desc "Make a user an admin"
-  task :fix_checkins do
+  task :fixcheckins => :environment do |t, args|
 
     Checkin.all.each do |checkin|
       a = Attendee.find(checkin.attendee_id)
