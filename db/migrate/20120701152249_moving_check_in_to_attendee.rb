@@ -5,7 +5,7 @@ class MovingCheckInToAttendee < ActiveRecord::Migration
 
     #migrate the data
     Checkin.all.each do |checkin|
-      a = Attendee.find(checkin.attendee_id)
+      a = Attendee.find(checkin.attendee.id)
       a.badged = true
       a.onsite = false
       a.save
