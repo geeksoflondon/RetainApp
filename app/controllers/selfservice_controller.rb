@@ -1,8 +1,6 @@
 class SelfserviceController < ApplicationController
 
-  before_filter :require_attendee
-  before_filter :load_common
-
+  before_filter :load_common, :except => [:oneclick, :destroy]
 
   def index
     redirect_to selfservice_hello_path
@@ -44,8 +42,33 @@ class SelfserviceController < ApplicationController
     #Not much to do here apart from show the thankyou screen.
   end
 
+  def oneclick
+    onetime = Oneclick.find_by_token(params[:token])
+    unless @onetime
+      redirect_to root_url
+    else
+      cookies.permanent[:token] = onetime.token
+      cookies.permanent[:oneclick] = true
+      redirect_to '/selfservice/hello'
+    end
+  end
+
+  def destroy
+    cookies.delete(:token)
+    cookies.delete(:oneclick)
+    redirect_to root_url
+  end
+
+  private
+
   def load_common
-    @event = @attendee.event
+    if cookies[:token]
+      oneclick = Oneclick.find_by_token(cookies[:token])
+      @attendee = Attendee.find(oneclick.attendee_id)
+      @event = @attendee.event
+    else
+        redirect_to root_url
+    end
   end
 
 end
