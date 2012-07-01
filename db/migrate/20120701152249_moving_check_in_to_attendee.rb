@@ -6,14 +6,14 @@ class MovingCheckInToAttendee < ActiveRecord::Migration
     #migrate the data
     Checkin.all.each do |checkin|
       a = Attendee.find(checkin.attendee_id)
-      a.badged = checkin.attended
-      a.onsite = checkin.onsite
+      a.badged = true
+      a.onsite = false
       a.save
     end
 
     #cleanup some old data issues related to checkins
     Attendee.all.each do |attendee|
-      if attendee.status = 'attended'
+      if attendee.status == 'attended'
         attendee.status = 'confirmed'
         attendee.badged = true
         attendee.save
