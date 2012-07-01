@@ -1,6 +1,0 @@
-<% @events.each do |event| %>
-	<h2><%= link_to(event.name, events_path+"/#{event.id}") %></h2>
-    <%= @event = event
-		render "shared/event_overview"
-    %>
-<% end %>
