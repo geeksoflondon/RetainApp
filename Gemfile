@@ -1,26 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'rails', '3.2.0'
 
 # Asset template engines
 gem 'json'
-gem 'sass-rails', "~> 3.1.0"
-gem 'coffee-script'
-gem 'uglifier'
+gem 'sass-rails'
 gem 'jquery-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 # Gems for image uploads
 gem 'carrierwave'
 gem 'fog'
 gem  'rmagick'
-
-#auth
-gem 'omniauth', '0.3.0.rc3'
 
 #pdf stuff
 gem 'prawn_rails'
