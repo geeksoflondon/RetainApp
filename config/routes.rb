@@ -14,13 +14,13 @@ RetainApp::Application.routes.draw do
   match 'selfservice/updatebadge' => 'selfservice#updatebadge'
   match 'selfservice/thankyou' => 'selfservice#thankyou'
 
+  #self service oneclick
+  match '/oneclick/:token' => 'selfservice#oneclick'
+  match '/logout' => "selfservice#destroy", :as => "logout"
+
   #qjump
   match 'qjump/:token' => 'qjump#index'
   match 'qjump/barcode/:token' => 'qjump#barcode'
-
-  #authentication
-  match '/oneclick/:token' => 'authentications#oneclick'
-  match '/logout' => "authentications#destroy", :as => "logout"
 
   root :to => 'welcome#index'
 
