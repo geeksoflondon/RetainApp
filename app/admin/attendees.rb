@@ -3,12 +3,13 @@ ActiveAdmin.register Attendee do
   filter :first_name
   filter :last_name
   filter :event
-  filter :status, :as => :select, :collection => proc { Attendee.status_types }
-  filter :badge, :as => :select, :collection => proc { Attendee.badge_types }
+  filter :status, :as => :select, :collection => proc { options_from_collection_for_select(Attendee.status_types.sort) }
+  filter :badge, :as => :select, :collection => proc { options_from_collection_for_select(Attendee.badge_types.sort) }
   filter :attended
 
   index do
 
+    column :id
     column :first_name
     column :last_name
     column :badge
