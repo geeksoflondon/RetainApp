@@ -15,10 +15,7 @@ ActiveAdmin.register Attendee do
     column :email
     column :phone_number
     column :status
-
-    column "Attended" do |attendee|
-     attendee.checkin.attended
-    end
+    column :badged
 
     column "Actions" do |attendee|
         link_to "View", admin_attendee_path(attendee)
