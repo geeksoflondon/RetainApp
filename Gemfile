@@ -9,6 +9,10 @@ gem 'jquery-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 
+# Active Admin
+gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+
 # Gems for image uploads
 gem 'carrierwave'
 gem 'fog'
