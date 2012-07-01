@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
   def index
-    @events = Event.current
+    redirect_to 'http://www.geeksoflondon.com/'
   end
 
 end

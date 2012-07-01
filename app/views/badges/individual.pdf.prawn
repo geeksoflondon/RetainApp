@@ -7,7 +7,7 @@ prawn_document(:page_size => "A5", :page_layout => :landscape, :margin => 0) do 
 	   end
 	   if !@attendee.twitter.nil?
 	     pdf.font("Helvetica", :size => 16) do
-	       pdf.text "@#{@attendee.twitter}" unless attendee.twitter.empty?
+	       pdf.text "@#{@attendee.twitter}" unless @attendee.twitter.empty?
 	     end
 	   end
 	 end
@@ -26,13 +26,13 @@ prawn_document(:page_size => "A5", :page_layout => :landscape, :margin => 0) do 
 	    end
 	    if !@attendee.twitter.nil?
 	      pdf.font("Helvetica", :size => 16) do
-	        pdf.text "@#{@attendee.twitter.downcase}" unless attendee.twitter.empty?
+	        pdf.text "@#{@attendee.twitter.downcase}" unless @attendee.twitter.empty?
 	      end
 	    end
 	 end
 
 	 pdf.bounding_box [5.mm, pdf.bounds.bottom + 40.mm], :width => 95.mm, :height => 30.mm do
-	   @barcode.annotate_pdf(pdf, :xdim => 1.2, :height => 8.mm)
+	   @qrcode.annotate_pdf(pdf, :xdim => 1.5)
 	 end
 	end
 end

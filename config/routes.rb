@@ -1,18 +1,8 @@
 RetainApp::Application.routes.draw do
 
-  resources :attendees, :only => [:show, :new, :edit, :create, :update, :destroy]
-  match 'attendees/bulkimport' => 'attendees#bulkimport', :via => [:post]
+  ActiveAdmin.routes(self)
 
-  resources :events
-  match 'events/:id/:filter_type/:filter' => 'events#show'
-
-  resources :onsite
-  match 'onsite/attendee/:id' => 'onsite#attendee'
-
-  match '/stats' => 'onsite#stats'
-  match '/stats/gecko/onsite' => 'stats#onsite'
-  match '/stats/gecko/attended' => 'stats#attended'
-  match '/stats/gecko/lastfive' => 'stats#lastfive'
+  devise_for :admin_users, ActiveAdmin::Devise.config
 
   #badges
   match 'badge/attendee/:id' => 'badges#individual'
@@ -28,20 +18,13 @@ RetainApp::Application.routes.draw do
   match 'selfservice/updatebadge' => 'selfservice#updatebadge'
   match 'selfservice/thankyou' => 'selfservice#thankyou'
 
+  #self service oneclick
+  match '/oneclick/:token' => 'selfservice#oneclick'
+  match '/logout' => "selfservice#destroy", :as => "logout"
+
   #qjump
   match 'qjump/:token' => 'qjump#index'
   match 'qjump/barcode/:token' => 'qjump#barcode'
-
-  #authentication
-  match '/auth/twitter/setup', :to => 'authentications#setup'
-  match '/auth/:provider/callback' => 'authentications#create'
-  match '/oneclick/:token' => 'authentications#oneclick'
-  match '/crew' => 'authentications#crew'
-  match '/auth/crew' => 'authentications#crew_auth'
-  match '/auth/failure' => redirect("/")
-  match '/login' => redirect('/auth/twitter'), :as => "login"
-  match '/logout' => "authentications#destroy", :as => "logout"
-
 
   root :to => 'welcome#index'
 

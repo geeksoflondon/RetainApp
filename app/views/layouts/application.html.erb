@@ -9,39 +9,7 @@
 <body>
 
     <div class="wrapper"> 
-    
-        <h1 class="logo"><%= image_tag("geeksoflondon.png") %></h1> 
-        <p class="txt_right">
-            <%= "Logged in as #{current_user.name} |" if logged_in?  %>
-            <%= link_to "Logout".html_safe, "/logout" if logged_in? %>
-            <%= link_to image_tag("twitter_connect.gif"), "/login" if !logged_in? %>
-        </p>
-    
-    <!-- Navigation --> 
-    
-        <div class="navigation"> 
-          <ul> 
-              <li><%= link_to 'HOME', root_path %></li> 
-              <li><%= link_to 'EVENTS', events_path() unless !admin? %></li> 
-              <li><%= link_to 'ON-SITE', onsite_index_path() unless !admin? %><li> 
-				  <li><%= link_to 'STATS', "/stats" unless !admin? %><li> 
-          </ul> 
-        </div>
-        
-        <div class="clear"></div> 
-        
-        <%=  render "shared/notices" if display_notice? %>
-        
-        <div class="content">
-            <%= yield if admin? || params[:controller] == 'authentications' %>
-            
-        </div>  
-        
-        <p class="footer">All information in this app is considered privileged and should not be shared.</p>
-
     </div>
-
-
 
 </body>
 </html>
