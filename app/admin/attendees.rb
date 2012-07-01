@@ -20,7 +20,6 @@ ActiveAdmin.register Attendee do
 
     column "Actions" do |attendee|
         link_to "View", admin_attendee_path(attendee)
-        link_to "Badge"
     end
 
   end
