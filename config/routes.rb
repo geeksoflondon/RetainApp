@@ -1,19 +1,5 @@
 RetainApp::Application.routes.draw do
 
-  resources :attendees, :only => [:show, :new, :edit, :create, :update, :destroy]
-  match 'attendees/bulkimport' => 'attendees#bulkimport', :via => [:post]
-
-  resources :events
-  match 'events/:id/:filter_type/:filter' => 'events#show'
-
-  resources :onsite
-  match 'onsite/attendee/:id' => 'onsite#attendee'
-
-  match '/stats' => 'onsite#stats'
-  match '/stats/gecko/onsite' => 'stats#onsite'
-  match '/stats/gecko/attended' => 'stats#attended'
-  match '/stats/gecko/lastfive' => 'stats#lastfive'
-
   #badges
   match 'badge/attendee/:id' => 'badges#individual'
   match 'badge/event/:id' => 'badges#event'
@@ -33,15 +19,8 @@ RetainApp::Application.routes.draw do
   match 'qjump/barcode/:token' => 'qjump#barcode'
 
   #authentication
-  match '/auth/twitter/setup', :to => 'authentications#setup'
-  match '/auth/:provider/callback' => 'authentications#create'
   match '/oneclick/:token' => 'authentications#oneclick'
-  match '/crew' => 'authentications#crew'
-  match '/auth/crew' => 'authentications#crew_auth'
-  match '/auth/failure' => redirect("/")
-  match '/login' => redirect('/auth/twitter'), :as => "login"
   match '/logout' => "authentications#destroy", :as => "logout"
-
 
   root :to => 'welcome#index'
 
