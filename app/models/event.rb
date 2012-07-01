@@ -21,7 +21,6 @@ class Event < ActiveRecord::Base
   end
 
   def english_date
-    #Is the event one or two days?
     event_length = (self.end - self.start).to_i
     unless event_length > 0
       "on #{self.start.to_formatted_s(:long_ordinal)}"
@@ -57,12 +56,12 @@ class Event < ActiveRecord::Base
     else
       return Checkin.where('event_id = ? AND attended = ?', self.id, true).count
     end
-  end  
+  end
 
   def no_show
     return (Checkin.where('event_id = ? AND attended = ?', self.id, false).count - self.cancelled)
   end
-  
+
   def attended_conf
     Attendee.joins(:checkin).where('checkins.event_id = ? AND status = ? AND attended = ?', self.id, 'confirmed', true).count
   end
@@ -70,19 +69,19 @@ class Event < ActiveRecord::Base
   def attended_unconf
     Attendee.joins(:checkin).where('checkins.event_id = ? AND status = ? AND attended = ?', self.id, 'unconfirmed', true).count
   end
-  
+
   def noshow_conf
     Attendee.joins(:checkin).where('checkins.event_id = ? AND status = ? AND attended = ?', self.id, 'confirmed', false).count
   end
-  
+
   def noshow_unconf
     Attendee.joins(:checkin).where('checkins.event_id = ? AND status = ? AND attended = ?', self.id, 'unconfirmed', false).count
   end
-  
+
   def onsite
     Checkin.where('event_id = ? AND onsite = ?', self.id, true).count
   end
-  
+
   def offsite
     return (self.attended - self.onsite)
   end
