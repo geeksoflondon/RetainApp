@@ -48,6 +48,7 @@ class Attendee < ActiveRecord::Base
   #At Events
   after_initialize :init
   before_validation :translate
+
   #before_validation :clean_up
   after_create :generate_oneclick
   after_create :generate_checkin
@@ -98,11 +99,11 @@ class Attendee < ActiveRecord::Base
   def badge_types
     @badge_types = VALID_BADGES
   end
-  
+
   def self.badge_types
     @badge_types = VALID_BADGES
   end
-  
+
   def diet_types
     @diet_types = VALID_DIETS
   end
