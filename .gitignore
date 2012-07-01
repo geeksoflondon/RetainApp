@@ -25,3 +25,4 @@ pickle-email-*.html
 .project
 heroku.yml
 .DS_Store
+pull_*
