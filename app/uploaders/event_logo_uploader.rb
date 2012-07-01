@@ -2,19 +2,14 @@
 
 class EventLogoUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or ImageScience support:
   include CarrierWave::RMagick
-  # include CarrierWave::ImageScience
-  #include CarrierWave::MiniMagick
 
-  # Choose what kind of storage to use for this uploader:
   storage :fog
 
   def cache_dir
     "#{Rails.root}/tmp/uploads"
   end
 
-  # Create different versions of your uploaded files:
   version :badge_logo do
     process :resize_to_fit => [300, 90]
   end
@@ -26,6 +21,5 @@ class EventLogoUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
 
 end
