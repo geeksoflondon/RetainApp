@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701134550) do
+ActiveRecord::Schema.define(:version => 20120701152249) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -63,19 +63,12 @@ ActiveRecord::Schema.define(:version => 20120701134550) do
     t.string   "public_profile"
     t.string   "barcode"
     t.text     "notes"
+    t.boolean  "badged"
+    t.boolean  "onsite"
   end
 
   add_index "attendees", ["event_id"], :name => "index_attendees_on_event_id"
   add_index "attendees", ["ticket_id"], :name => "index_attendees_on_ticket_id"
-
-  create_table "checkins", :force => true do |t|
-    t.integer  "attendee_id"
-    t.integer  "event_id"
-    t.boolean  "onsite"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "attended",    :default => false
-  end
 
   create_table "events", :force => true do |t|
     t.string   "name"
