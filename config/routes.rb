@@ -26,6 +26,9 @@ RetainApp::Application.routes.draw do
   match 'qjump/:token' => 'qjump#index'
   match 'qjump/barcode/:token' => 'qjump#barcode'
 
+  #checkin
+  match 'checkin/' => 'checkin#index'
+
   root :to => 'welcome#index'
 
 end

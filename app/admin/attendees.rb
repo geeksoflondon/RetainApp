@@ -12,7 +12,11 @@ ActiveAdmin.register Attendee do
     column :id
     column :first_name
     column :last_name
-    column :badge
+
+    column "Badge" do |attendee|
+      attendee.badge_types[attendee.badge]
+    end
+
     column :email
     column :phone_number
 
