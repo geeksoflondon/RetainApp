@@ -8,38 +8,49 @@
 //= require jquery_ujs
 //= require_tree .
 
-setTimeout(function() { $('.check_main').slideUp(); }, 3000);
-setTimeout(function() { $('.error').slideUp(); }, 3000);
+function isAppleDevice(){
+    return (
+        (navigator.userAgent.toLowerCase().indexOf("ipad") > -1) ||
+        (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) ||
+        (navigator.userAgent.toLowerCase().indexOf("ipod") > -1)
+    );
+}
 
+/*SelfService JS*/
 $(document).ready(function() {
-	
-	if($('#onsite_search').length > 0){
-		$('#onsite_search').focus();
-	} else if($('.search_box').length > 0) {
-		$('.search_box').focus()
-	}
-	
-	///Is this a badge editing screen
-	if (($(".badge").length > 0) && ($(".your_details").length > 0)){
-		
-		$('#attendee_first_name').focus();
-		
-		$('#attendee_first_name').bind("keyup keydown change focus focusout", (function() {
-			$(".first_name").text($('#attendee_first_name').val())
-		}));
+    if($('#onsite_search').length > 0){
+        $('#onsite_search').focus();
+    } else if($('.search_box').length > 0) {
+        $('.search_box').focus()
+    }
+    
+    ///Is this a badge editing screen
+    if (($(".badge").length > 0) && ($(".your_details").length > 0)){
+        
+        $('#attendee_first_name').focus();
+        
+        $('#attendee_first_name').bind("keyup keydown change focus focusout", (function() {
+            $(".first_name").text($('#attendee_first_name').val())
+        }));
 
-		$('#attendee_last_name').bind("keyup keydown change focus focusout", (function() {
-			$(".last_name").text($('#attendee_last_name').val())
-		}));
-		
-		$('#attendee_twitter').bind("keyup keydown change focus focusout", (function() {
-			$(".twitter_id").text("@"+$('#attendee_twitter').val())
-			
-			if ($('#attendee_twitter').val().length < 1) {
-				$(".twitter_id").text('')
-			}
-			
-		}));
-	}
+        $('#attendee_last_name').bind("keyup keydown change focus focusout", (function() {
+            $(".last_name").text($('#attendee_last_name').val())
+        }));
+        
+        $('#attendee_twitter').bind("keyup keydown change focus focusout", (function() {
+            $(".twitter_id").text("@"+$('#attendee_twitter').val())
+            
+            if ($('#attendee_twitter').val().length < 1) {
+                $(".twitter_id").text('')
+            }
+            
+        }));
+    }
+});
 
+/*CheckIn Js*/
+$(document).ready(function() {
+    if (isAppleDevice === true){
+        $("#scanner-link").attr('href', 'etoken://');
+    }
 });
