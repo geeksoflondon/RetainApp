@@ -1,0 +1,8 @@
+<form class="filterform" action="#">
+    <input class="filterinput" type="text">
+</form>
+<ul class="attendees">
+    <% @attendees.each do |attendee| %>
+    <li><a href="#"><%= attendee.first_name %> <%= attendee.last_name %></a></li>
+    <% end %>
+</ul>

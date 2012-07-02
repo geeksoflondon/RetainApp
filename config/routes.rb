@@ -28,6 +28,7 @@ RetainApp::Application.routes.draw do
 
   #checkin
   match 'checkin/' => 'checkin#index'
+  match 'checkin/attendees' => 'checkin#attendees'
 
   root :to => 'welcome#index'
 

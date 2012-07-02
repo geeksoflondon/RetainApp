@@ -5,16 +5,7 @@
 // the compiled file.
 //
 //= require jquery
-//= require jquery_ujs
 //= require_tree .
-
-function isAppleDevice(){
-    return (
-        (navigator.userAgent.toLowerCase().indexOf("ipad") > -1) ||
-        (navigator.userAgent.toLowerCase().indexOf("iphone") > -1) ||
-        (navigator.userAgent.toLowerCase().indexOf("ipod") > -1)
-    );
-}
 
 /*SelfService JS*/
 $(document).ready(function() {
@@ -45,12 +36,5 @@ $(document).ready(function() {
             }
             
         }));
-    }
-});
-
-/*CheckIn Js*/
-$(document).ready(function() {
-    if (isAppleDevice === true){
-        $("#scanner-link").attr('href', 'etoken://');
     }
 });

@@ -51,17 +51,17 @@ table {
 /*Struts*/
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #F2F2F2;
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 1.8em;
     text-align: left;
 }
 
 h2 {
-    font-size: 2.5em;
+    font-size: 1.3em;
     text-align: center;
 }
 
@@ -72,31 +72,49 @@ p {
 
 header {
     height: 2.4em;
-    padding: 0.2em 0 0.2em 0.5em;
-    background-color: #C48F42;
+    padding: 0.5em 0 0.2em 0.5em;
+    background-color: #000;
     color: #fff;
 }
 
-/*Styling*/
-
-ul.menu {
-    width: 80%;
+/* List Styling*/
+ul {
+    width: 100%;
     margin: 0 auto;
-    margin-top: 2em;
 }
 
-ul.menu li{
+ul li{
     display: block;
     padding: 1em 0 1em 0;
     height: 1em;
-    background-color: #CDCDCD;
-    margin-bottom: 1em;
+    background-color: #F6F6F6;
+    border-bottom:2px solid #666;
     text-align: center;
     font-size: 1em;
-    background: -webkit-gradient( linear, left bottom, left top, color-stop(0.05, #C48F42), color-stop(1, #FFC477) );
-    border-radius: 1em;
+    background: #cdcdcd;
 }
 
-ul.menu li a {
+ul li a {
+    width:100%;
+    height:0.95em;
     color: #000;
+    display: block;
+}
+
+/*Front Page Specific*/
+ul.menu {
+    margin-top: 2em;
+}
+
+ul.menu > li:first-child{
+    border-top: 2px solid #666;    
+}
+
+/*Filter List Styling*/
+input.filterinput {
+    margin: 0;
+    width: 93%;
+    height: 1.8em;
+    border: none;
+    font-size: 1.5em;
 }
