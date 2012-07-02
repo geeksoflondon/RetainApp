@@ -51,6 +51,9 @@ ActiveAdmin.register Attendee do
       dt "Signups"
       dd event.signups
 
+      dt "Unconfirmed"
+      dd event.unconfirmed
+
       dt "Confirmed"
       dd event.confirmed
 

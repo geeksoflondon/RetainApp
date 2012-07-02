@@ -1,5 +1,26 @@
 <ul class="menu">
     <li><a id="scanner-link" href="/checkin/scanner">Launch Scanner</a></li>
-    <li><a href="/checkin/attendees">Find Attendee</a></li>
+    <li><a href="/checkin/attendees">Attendee List</a></li>
     <li><a href="/checkin/stats">Current Stats</a></li>
 </ul>
+
+<h2>Current Stats</h2>
+
+<table>
+    <tr>
+        <td class="label">Est. Attending</td>
+        <td><%= @event.attending %></td>
+    </tr>
+    <tr>
+        <td class="label">Attended</td>
+        <td><%= @event.attended %></td>
+    </tr>
+    <tr>
+        <td class="label">Onsite</td>
+        <td><%= @event.onsite %></td>
+    </tr>
+    <tr>
+        <td class="label">Offsite</td>
+        <td><%= @event.offsite %></td>
+    </tr>
+</table>
