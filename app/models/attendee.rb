@@ -116,11 +116,6 @@ class Attendee < ActiveRecord::Base
     @public_profile = VALID_PUBLIC_PROFILE
   end
 
-  def scanned!
-    self.checkin.scan
-    self.save
-  end
-
   def translate
     if VALID_BADGES.has_value?(self.badge)
       self.badge = VALID_BADGES.key(self.badge)

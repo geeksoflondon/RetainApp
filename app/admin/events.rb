@@ -32,13 +32,18 @@ ActiveAdmin.register Event do
     end
 
 
-    column "Actions" do |event|
+    column "View" do |event|
         link_to "View", admin_event_path(event)
     end
+
+    column "Badges" do |event|
+      link_to "Badges", "/badge/event/#{event.id}.pdf"
+    end
+
   end
 
-  # show :title => :name do
-  # end
+  show :title => :name do
+  end
 
   sidebar :counts, :only => :show do
     dl do

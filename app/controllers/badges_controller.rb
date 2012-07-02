@@ -6,12 +6,10 @@ Mime::Type.register "application/pdf", :pdf
 
 class BadgesController < ApplicationController
 
-  before_filter :require_admin
-
   def individual
     @attendee = Attendee.find(params[:id])
     @barcode = Barby::Code128.new(@attendee.id.to_s.rjust(8, '0'), 'A')
-    @qrcode  = Barby::QrCode.new("http://me.geeksoflondon.com/badge/#{@attendee.token}", :size => 4, :level => :m)
+    @qrcode  = Barby::QrCode.new("http://me.geeksoflondon.com/badge/#{@attendee.oneclick.token}", :size => 5, :level => :m)
   end
 
   def event
