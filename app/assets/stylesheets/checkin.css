@@ -150,6 +150,16 @@ span.onsite.false {
     background-color: red;
 }
 
+ul.attendees li.odd {
+    background-color: #666;
+    color: #FFFFFF;
+}
+
+ul.attendees li.odd a {
+    background-color: #666;
+    color: #FFFFFF;
+}
+
 /*Table Style*/
 table {
     width: 100%;
