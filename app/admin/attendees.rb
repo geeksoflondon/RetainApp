@@ -2,6 +2,7 @@ ActiveAdmin.register Attendee do
 
   filter :first_name
   filter :last_name
+  filter :phone_number
   filter :event
   filter :status, :as => :select, :collection => proc { Attendee.status_types.invert }
   filter :badge, :as => :select, :collection => proc { Attendee.badge_types.invert }
