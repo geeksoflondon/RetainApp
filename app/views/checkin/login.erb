@@ -1,0 +1,12 @@
+<ul class="menu">
+    <li><a id="scanner-link" href="etoken://">Login via Scanner (Select login token)</a></li>
+    <li>
+      <%= form_tag do %>
+        <%= label_tag(:badge, "Scan your barcode:") %>
+        <%= text_field_tag(:badge) %>
+        <%= submit_tag("Login") %>
+      <% end %>      
+    </li>
+    <li>btw we use cookiez</li>
+</ul>
+

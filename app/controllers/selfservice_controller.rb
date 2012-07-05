@@ -56,6 +56,7 @@ class SelfserviceController < ApplicationController
   def destroy
     cookies.delete(:token)
     cookies.delete(:oneclick)
+    cookies.delete(:crew)
     redirect_to root_url
   end
 
