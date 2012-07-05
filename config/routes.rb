@@ -32,7 +32,7 @@ RetainApp::Application.routes.draw do
   match 'checkin/attendee/:id' => 'checkin#attendee'
   match 'checkin/stats' => 'checkin#stats'
   match 'checkin/login' => 'checkin#login'
-  match 'checkin/login/qrlogin/:token' => 'checkin#qrlogin'
+  match 'checkin/qrlogin/:token' => 'checkin#qrlogin'
 
   #hacks
   match 'current_event.json' => 'welcome#current_event_stats'
