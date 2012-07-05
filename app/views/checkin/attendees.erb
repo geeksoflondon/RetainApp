@@ -1,5 +1,5 @@
 <ul class="attendees">
     <% @attendees.each do |attendee| %>
-    <li><span class="onsite <%= attendee.onsite %>"></span><a href="#"><%= attendee.first_name %> <%= attendee.last_name %></a></li>
+    <li><span class="onsite <%= attendee.onsite %>"></span><a href="/checkin/attendee/<%= attendee.id %>"><%= attendee.first_name %> <%= attendee.last_name %></a></li>
     <% end %>
 </ul>

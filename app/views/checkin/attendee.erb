@@ -1,0 +1,16 @@
+<section id="attendee">
+    <h3><%= @attendee.first_name %> <%= @attendee.last_name %></h3>
+    <h4>Status</h4>
+    <p><%=  Attendee.badge_state[@attendee.badged] %> / <%=  Attendee.onsite_state[@attendee.onsite] %> / <%=  Attendee.status_types[@attendee.status] %></p>
+    <h4>Diet:</h4>
+    <p><%=  Attendee.diet_types[@attendee.diet] %></p>
+    <h4>T-Shirt:</h4>
+    <p><%=  Attendee.tshirt_types[@attendee.t_shirt] %></p>
+    <h4>Notes:</h4>
+    <p><%=  @attendee.notes %></p>
+<section>
+    
+<ul class="menu">
+    <li><a href="/checkin/tokenweb/<%= @attendee.id %>">TokenWeb Info</a></li>
+    <li><a href="/checkin/attendees">Back</a></li>
+</ul>

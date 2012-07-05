@@ -30,9 +30,12 @@ RetainApp::Application.routes.draw do
   match 'checkin' => 'checkin#index'
   match 'checkin/attendees' => 'checkin#attendees'
   match 'checkin/attendee/:id' => 'checkin#attendee'
+  match 'checkin/issue/:id' => 'checkin#issue'
   match 'checkin/stats' => 'checkin#stats'
   match 'checkin/login' => 'checkin#login'
   match 'checkin/qrlogin/:token' => 'checkin#qrlogin'
+  match 'checkin/scanner' => 'checkin#scanner'
+  match 'checkin/app' => 'checkin#app'
 
   #hacks
   match 'current_event.json' => 'welcome#current_event_stats'

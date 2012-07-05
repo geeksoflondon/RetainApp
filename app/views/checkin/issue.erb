@@ -1,0 +1,10 @@
+<% if @attendee %>
+    <p><%= @attendee.first_name %> <%= @attendee.last_name %> is now  <%= Attendee.onsite_state[@attendee.onsite] %></p>
+    <% if @attendee.notes != '' %>
+        <p style="color:white; background-color:red; padding: 1em;"><%= @attendee.notes %></p>
+    <% end %>
+<% end %>
+
+<ul class="menu">
+    <li><a id="scanner-link" href="etoken://">Back to Scanner</a></li>
+</ul>    

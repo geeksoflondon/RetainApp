@@ -178,3 +178,22 @@ tr.odd {
   background-color: #666;
   color: #FFFFFF;
 }
+
+/*Attendee Styling*/
+
+#attendee > h3 {
+    text-transform: uppercase;
+    font-size: 1.4em;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    padding: 0.25em;
+    margin-bottom: 0.5em;
+}
+
+#attendee > h4 {
+    text-transform: uppercase;
+    font-size: 1em;
+    text-align: center;
+    font-weight: bold;
+}

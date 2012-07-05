@@ -37,6 +37,16 @@ class Attendee < ActiveRecord::Base
     'm5' => 'Male XXL'
   }.freeze
 
+  VALID_BADGE_STATE = {
+    true => 'Badged',
+    false => 'Not Badged'
+  }.freeze
+
+  VALID_ONSITE_STATE = {
+    true => 'On Site',
+    false => 'Off Site'
+  }.freeze
+
   VALID_PUBLIC_PROFILE = {'0' => 'No', '1' => 'Yes'}.freeze
 
   #Relationships
@@ -108,8 +118,32 @@ class Attendee < ActiveRecord::Base
     @diet_types = VALID_DIETS
   end
 
+  def self.diet_types
+    @diet_types = VALID_DIETS
+  end
+
   def tshirt_types
     @tshirt_types = VALID_TSHIRTS
+  end
+
+  def self.tshirt_types
+    @tshirt_types = VALID_TSHIRTS
+  end
+
+  def badge_state
+    @badge_state = VALID_BADGE_STATE
+  end
+
+  def self.badge_state
+    @badge_state = VALID_BADGE_STATE
+  end
+
+  def onsite_state
+    @onsite_state = VALID_ONSITE_STATE
+  end
+
+  def self.onsite_state
+    @onsite_state = VALID_ONSITE_STATE
   end
 
   def profile_types
@@ -150,11 +184,18 @@ class Attendee < ActiveRecord::Base
     end
   end
 
-  def generate_checkin
-    unless Checkin.find_by_attendee_id(self.id)
-      checkin = Checkin.new('attendee_id' => self.id, 'event_id' => self.event_id)
-      checkin.save
-    end
+  def checkin
+      self.badged = true
+
+      if self.onsite == false
+        self.onsite = true
+        Tracking.new(:event_id => self.event_id, :attendee_id => self.id, :action => 'ONSITE')
+      else
+        self.onsite = false
+        Tracking.new(:event_id => self.event_id, :attendee_id => self.id, :action => 'OFFSITE')
+      end
+
+      self.save
   end
 
   def is_crew_today?
