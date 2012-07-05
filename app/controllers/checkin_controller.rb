@@ -14,7 +14,7 @@ class CheckinController < ApplicationController
   
   def qrlogin
     if params[:token]
-      user = Attendee.find(params[:token])
+      user = Oneclick.find_by_token(params[:token]).attendee
       if user.is_crew_today?
         cookies.permanent[:crew] = user.oneclick.token
         redirect_to checkin_path
