@@ -46,24 +46,22 @@ class CheckinController < ApplicationController
     if token
       oneclick = Oneclick.find_by_token(token)
 
-      unless oneclick
-        response = {:message => "No ticket for event!", :success => false}
-        render :json => response.to_json
-      end
-
-      if (oneclick.attendee.event_id == Event.now.id)
-        oneclick.attendee.checkin
-        oneclick.attendee.reload
-      end
-
-      unless (oneclick.attendee.notes && @attendee.badged == false)
-        if oneclick.attendee.onsite == false
-          response = {:message => @attendee.first_name+" checked in", :success => true}
+        if (oneclick == nil || (oneclick.attendee.event_id != Event.now.id))
+          response = {:message => "No ticket for event!", :success => false}
         else
-          response = {:message => @attendee.first_name+" checked out", :success => true}
-        end
-      else
-          response = {:message => "Opening Retain", :success => false, :action_url => 'http://retain.geeksoflondon.com/checkin/issue/'+@attendee.id}
+
+          oneclick.attendee.checkin
+          oneclick.attendee.reload
+
+          unless (oneclick.attendee.notes && oneclick.attendee.badged == false)
+            if oneclick.attendee.onsite == false
+              response = {:message => oneclick.attendee.first_name+" checked in", :success => true}
+            else
+              response = {:message => oneclick.attendee.first_name+" checked out", :success => true}
+            end
+          else
+              response = {:message => "Opening Retain", :success => false, :action_url => 'http://retain.geeksoflondon.com/checkin/issue/'+oneclick.attendee.id}
+          end
       end
 
     else
