@@ -73,7 +73,7 @@ class CheckinController < ApplicationController
       end
 
     else
-      response = {:message => "No ticket for event!", :success => false}
+      response = {:message => "No token for event!", :success => false}
     end
 
 
