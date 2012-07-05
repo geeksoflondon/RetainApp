@@ -32,6 +32,9 @@ RetainApp::Application.routes.draw do
   match 'checkin/attendee/:id' => 'checkin#attendee'
   match 'checkin/stats' => 'checkin#stats'
 
+  #hacks
+  match 'current_event.json' => 'welcome#current_event_stats'
+
   root :to => 'welcome#index'
 
 end
