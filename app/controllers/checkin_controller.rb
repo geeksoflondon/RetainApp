@@ -42,32 +42,40 @@ class CheckinController < ApplicationController
   end
 
   def app
+
     token = params[:token]
-    if token
-      oneclick = Oneclick.find_by_token(token)
+    oneclick = Oneclick.find_by_token(token)
 
-        if (oneclick == nil || (oneclick.attendee.event_id != Event.now.id))
-          response = {:message => "No ticket for event!", :success => false}
-        else
+    unless oneclick.nil?
 
-          oneclick.attendee.checkin
-          oneclick.attendee.reload
+      attendee = oneclick.attendee
 
-          unless (oneclick.attendee.notes && oneclick.attendee.badged == false)
-            if oneclick.attendee.onsite == false
-              response = {:message => oneclick.attendee.first_name+" checked in", :success => true}
-            else
-              response = {:message => oneclick.attendee.first_name+" checked out", :success => true}
-            end
-          else
-              response = {:message => "Opening Retain", :success => false, :action_url => 'http://retain.geeksoflondon.com/checkin/issue/'+oneclick.attendee.id}
-          end
+      if attendee.event_id == Event.now.id
+
+        notes = true if attendee.notes
+        first_time = true if attendee.badged == false
+
+        attendee.checkin
+        attendee.reload
+
+        if notes == true && first_time == true
+          response = {:message => "Opening Retain", :success => false, :action_url => 'http://retain.geeksoflondon.com/checkin/issue/'+attendee.id.to_s}
+        end
+
+        if attendee.onsite == true && first_time != true
+          response = {:message => attendee.first_name+" checked in", :success => true}
+        elsif attendee.onsite == false && first_time != true
+          response = {:message => attendee.first_name+" checked out", :success => true}
+        end
+
+      else
+        response = {:message => "No ticket for event!", :success => false}
       end
 
     else
-      response = {:message => "Bad token!", :success => false}
-
+      response = {:message => "No ticket for event!", :success => false}
     end
+
 
     render :json => response.to_json
   end
