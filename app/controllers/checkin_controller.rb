@@ -41,9 +41,7 @@ class CheckinController < ApplicationController
 
     if cookies[:crew]
       oneclick = Oneclick.find_by_token(cookies[:crew])
-      @user = Attendee.find(oneclick.attendee_id)
-
-      unless @user.is_crew_today?
+      unless oneclick.attendee.is_crew_today?
         redirect_to checkin_login_path
       end
 

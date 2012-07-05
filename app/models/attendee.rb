@@ -162,7 +162,7 @@ class Attendee < ActiveRecord::Base
       return false
     else
       event = Event.find(self.event_id)
-      if event == Event.current.last
+      if event == Event.now
         return true
       else
         return false
