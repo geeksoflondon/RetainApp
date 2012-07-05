@@ -9,6 +9,8 @@ class CheckinController < ApplicationController
         cookies.permanent[:crew] = user.oneclick.token
         redirect_to checkin_path
       end
+    else
+      redirect_to root_path
     end
   end
   
@@ -19,6 +21,8 @@ class CheckinController < ApplicationController
         cookies.permanent[:crew] = user.oneclick.token
         redirect_to checkin_path
       end
+    else
+      redirect_to root_path
     end
   end
   
