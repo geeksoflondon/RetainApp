@@ -89,5 +89,13 @@ ActiveAdmin.register Attendee do
       dd event.offsite
     end
   end
+  
+  csv do
+       column :first_name
+       column :last_name
+       column :email
+       column :status
+       column("Token") { |attendee| attendee.oneclick.token }
+  end
 
 end
