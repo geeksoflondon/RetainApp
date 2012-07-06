@@ -3,6 +3,8 @@ require "barby/barcode/code_128"
 class QjumpController < ApplicationController
 
   def index
+    cookies.delete(:token)
+    cookies.delete(:oneclick)
     @oneclick = Oneclick.find_by_token(params[:token])
     @attendee = @oneclick.attendee
     @event = @attendee.event
