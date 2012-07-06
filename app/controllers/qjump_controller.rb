@@ -10,7 +10,7 @@ class QjumpController < ApplicationController
 
   def barcode
     oneclick = Oneclick.find_by_token(params[:token])
-    redirect_to "http://qr.kaywa.com/img.php?s=8&d=http%3A%2F%2Fme.geeksoflondon.com%2Fbadge%2F"+oneclick.token
+    redirect_to "http://chart.apis.google.com/chart?cht=qr&chs=230x230&chld=L&choe=UTF-8&chl=http%3A%2F%2Fme.geeksoflondon.com%2Fbadge%2F"+oneclick.token
   end
 
 
