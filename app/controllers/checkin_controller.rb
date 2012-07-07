@@ -1,6 +1,6 @@
 class CheckinController < ApplicationController
 
-  before_filter :logged_in?, :except => [:login, :qrlogin, :app]
+  #before_filter :logged_in?, :except => [:login, :qrlogin, :app]
   protect_from_forgery :except => :app
 
   def index
