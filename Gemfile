@@ -16,7 +16,7 @@ gem "meta_search",    '>= 1.1.0.pre'
 # Gems for image uploads
 gem 'carrierwave'
 gem 'fog'
-gem  'rmagick'
+gem 'rmagick'
 
 #pdf stuff
 gem 'prawn_rails'
@@ -30,6 +30,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'therubyracer'
 end
 
 group :test, :development do
