@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem 'rails', '3.2.12'
 
 # Asset template engines
 gem 'json'
@@ -23,14 +23,13 @@ gem 'prawn_rails'
 gem 'barby'
 gem 'rqrcode'
 
-group :development do 
+group :development do
   gem 'heroku'
   gem 'mysql'
 end
 
 group :production do
   gem 'pg'
-  gem 'therubyracer-heroku', '0.8.1.pre3'
 end
 
 group :test, :development do

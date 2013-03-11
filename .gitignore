@@ -26,3 +26,6 @@ pickle-email-*.html
 heroku.yml
 .DS_Store
 pull_*
+.vagrant
+Vagrantfile
+puppet

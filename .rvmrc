@@ -1,1 +1,1 @@
-rvm 1.9.2@retainapp
+rvm use 1.9.3-p374@retainapp --create
